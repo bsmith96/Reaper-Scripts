@@ -1,6 +1,14 @@
 # Reaper Scripts
 
-To use these scripts, you can create "New action..." in the actions menu and copy and paste the text, or possibly move them into your scripts folder (I'm not entirely sure how that works!).
+These scripts are designed to be very adaptable - you can easily alter them without delving too deeply into the script, and make them work for your current project.
+
+The easiest way to do this is to keep the scripts in your project's directory (or a subdirectory), and add the name of the project to the start of the filename. This will allow you to easily find all the associated scripts in the actions menu.
+
+You can either edit them in an external text editor before loading them into Reaper, or load them first and edit them in the built in ReaScript editor.
+
+Once you've got all the scripts you want in a folder, go to the actions window (press '?') and select "New action...". Select "Load ReaScript" from the dropdown menu, navigate to your folder and highlight them all at once.
+
+Now you can set keyboard shortcuts or midi triggers for the scripts.
 
 ## Scripts
 
