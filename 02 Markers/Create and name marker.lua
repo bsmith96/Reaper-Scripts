@@ -11,8 +11,6 @@ if markerName_csv == "" then
   markerName, markerName_csv = reaper.GetUserInputs("Marker Name", 1, "Name,separator,extrawidth=100", "")
 end
 
--- To use this script to automatically set a specific name, 
-
 -- Define function
 
 function createMarker(name)
