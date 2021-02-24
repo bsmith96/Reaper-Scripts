@@ -1,0 +1,48 @@
+// REAPER VCA assign Template 1.0
+
+// Initial values
+inputs=48; // Overall number of system tracks, before the VCAs.
+
+function setVCA(track, VCA)
+(
+  tr = GetTrack(0, (track-1));
+  ExpVCA = 2^(VCA-1);
+  getSetTrackGroupMembership(tr, "VOLUME_VCA_SLAVE",ExpVCA, ExpVCA);
+  SetMediaTrackInfo_Value(tr, "B_MUTE", 0);
+);
+
+function remVCA(track)
+(
+  tr = GetTrack(0, (track-1));
+  SetMediaTrackInfo_Value(tr, "B_MUTE", 1);
+  lastVCA=getSetTrackGroupMembership(tr, "VOLUME_VCA_SLAVE", 0, 0);
+  getSetTrackGroupMembership(tr, "VOLUME_VCA_SLAVE", lastVCA, 0);
+);
+
+function nameVCA(VCA, name, color)
+(
+  tr = GetTrack(0, VCA+inputs-1);
+  #name = name;
+  GetSetMediaTrackInfo_String(tr, "P_NAME", #name, 1);
+  SetTrackColor(tr, Color*ColorToNative(255, 86, 36));
+);
+
+function resetVCA(inputs)
+(
+  a = 0;
+  loop(inputs,
+    track = 1 + a;
+    remVCA(track);
+    a = a + 1;
+  );
+  b = 0;
+  loop(8,
+    VCA = 1 + b;
+    nameVCA(VCA,"",0);
+    b = b + 1;
+  );
+);
+
+// VCA ASSIGN
+
+resetVCA(inputs);
