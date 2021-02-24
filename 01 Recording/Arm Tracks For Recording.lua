@@ -25,3 +25,15 @@ end
 -- Run Script -----------------------------
 -- use the armTrack or armRange functions here to define which tracks you want to record onto. Use the track numbers as they appear on Reaper.
 
+-- WIP: Alternative section for individual tracks as an array
+--[[
+tracksToArm = {1,6,8}
+
+armTrackSize = #tracksToArm
+for i = armTrackSize, 1, -1
+do
+	trackNum = tracksToArm[i]
+	track = reaper.GetTrack(0,trackNum-1)
+	reaper.CSurf_OnRecArmChange(track, -1)
+end
+--]]
