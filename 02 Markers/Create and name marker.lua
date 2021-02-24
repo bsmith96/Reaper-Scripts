@@ -1,4 +1,6 @@
 -- Create and name marker -----------------
+-- Author: Ben Smith ----------------------
+-- Useful to create a new marker when recording. Can be easily called by a midi trigger and can have a default marker name, or can prompt the user to enter one.
 
 -- Variables
 markerName_csv = "" -- To use this script to automatically create a specific marker, add the name here

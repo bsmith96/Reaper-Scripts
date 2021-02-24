@@ -1,7 +1,6 @@
 -- Arm tracks for recording ---------------
 -- Author: Ben Smith ----------------------
-
-numberOfTracks = reaper.CountTracks(0)
+-- Useful when you are regularly arming and disarming the same group of tracks, but do not want to arm every track in the project (e.g. recording a multitrack performance, and you have groups or folders).
 
 
 -- Toggle record arm on a specific track
