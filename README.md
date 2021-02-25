@@ -10,29 +10,33 @@ Once you've got all the scripts you want in a folder, go to the actions window (
 
 Now you can set keyboard shortcuts or midi triggers for the scripts.
 
-## Scripts
+## 01 Recording
 
-### 01 Recording
-
-#### Arm Tracks For Recording
+### Arm Tracks For Recording
 
 To be customised to toggle arm/disarm a specific set of tracks. Useful when you are regularly arming and disarming the same group of tracks, but do not want to arm every track in the project (e.g. recording a multitrack performance, and you have groups or folders).
 
-### 02 Markers
+## 02 Markers
 
-#### Create and name marker
+### Create and name marker
 
 Creates a marker at the time when the script is triggered, which by default asks for user input to name it. Can be easily adapted to use a preset name, and can be easily triggered by midi 
 
 One use case might be Qlab putting markers when certain cues are triggered and labelling them appropriately.
 
-#### Create marker
+### Create marker
 
 A streamlined version of the above, simply creates a marker named "".
 
-### 99 Miscellaneous
+## 03 Structure
 
-#### VCA Assign Template
+### Put selected tracks in new folder track
+
+Adds a new track above the currently selected group of tracks, and indents the current selection 1 level. Can be set to prompt for a name for the new folder, or to leave the name blank.
+
+## 99 Miscellaneous
+
+### VCA Assign Template
 
 An old script for recalling (as if it were a scene on a digital mixing desk) to assign different inputs to a set of VCAs. This is a template.
 
