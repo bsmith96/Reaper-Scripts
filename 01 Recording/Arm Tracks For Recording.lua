@@ -2,6 +2,15 @@
 -- Author: Ben Smith ----------------------
 -- Useful when you are regularly arming and disarming the same group of tracks, but do not want to arm every track in the project (e.g. recording a multitrack performance, and you have groups or folders).
 
+-- User customisation area ----------------
+
+tracksToArm = {}
+rangeToArm = {}
+
+--------- End of user customisation area --
+
+
+---- Functions
 
 -- Toggle record arm on a specific track
 
@@ -14,26 +23,38 @@ end
 -- Toggle record arm on a range of tracks
 
 function armRange(firstTrack, lastTrack)
-	for i = lastTrack, firstTrack, -1
-	do  
-		track = reaper.GetTrack(0,i-1)
+	if firstTrack ~= lastTrack then
+		for i = lastTrack, firstTrack, -1
+		do  
+			track = reaper.GetTrack(0,i-1)
+			reaper.CSurf_OnRecArmChange(track, -1)
+		end
+	end
+end
+
+
+-- Toggle record arm on a set of specific tracks
+
+function armTracks(arrayToArm)
+	armTrackSize = #arrayToArm
+	for i = armTrackSize, 1, -1
+	do
+		trackNum = arrayToArm[i]
+		track = reaper.GetTrack(0, trackNum-1)
 		reaper.CSurf_OnRecArmChange(track, -1)
 	end
 end
 
 
 -- Run Script -----------------------------
--- use the armTrack or armRange functions here to define which tracks you want to record onto. Use the track numbers as they appear on Reaper.
 
--- WIP: Alternative section for individual tracks as an array
---[[
-tracksToArm = {1,6,8}
-
-armTrackSize = #tracksToArm
-for i = armTrackSize, 1, -1
-do
-	trackNum = tracksToArm[i]
-	track = reaper.GetTrack(0,trackNum-1)
-	reaper.CSurf_OnRecArmChange(track, -1)
+if tracksToArm ~= {} then
+	armTracks(tracksToArm)
 end
---]]
+
+armRangeSize = #rangeToArm
+armRangeFirst = rangeToArm[1]
+armRangeLast = rangeToArm[armRangeSize]
+
+armRange(armRangeFirst, armRangeLast)
+	
