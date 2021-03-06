@@ -13,19 +13,20 @@ reaper.Undo_BeginBlock()
 
   -- Count selected tracks (relative to 0)
   selectedTrackCount = reaper.CountSelectedTracks(0)-1
+  
+  -- Create table for all selected tracks
+  tracks = {}
 
   -- Get user data of last of selected tracks
   for i = 0, selectedTrackCount do
     track = reaper.GetSelectedTrack2(0, i,false)
+    table.insert(tracks, reaper.CSurf_TrackToID(track, false))
   end
 
-  -- Convert to ID of last track
-  track = reaper.CSurf_TrackToID(track, false)
-
   -- Compute positions of required tracks
-  insertPoint = track-selectedTrackCount-1
-  firstTrack = track-selectedTrackCount
-  lastTrack = track
+  insertPoint = tracks[1]-1
+  firstTrack = tracks[1]
+  lastTrack = tracks[#tracks]
 
 
   ---- Create the folder and indent the selection
