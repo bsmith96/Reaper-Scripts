@@ -10,11 +10,15 @@ Once you've got all the scripts you want in a folder, go to the actions window (
 
 Now you can set keyboard shortcuts or midi triggers for the scripts.
 
+----
+
 ## 01 Recording
 
 ### Arm Tracks For Recording
 
 To be customised to toggle arm/disarm a specific set of tracks. Useful when you are regularly arming and disarming the same group of tracks, but do not want to arm every track in the project (e.g. recording a multitrack performance, and you have groups or folders).
+
+----
 
 ## 02 Markers
 
@@ -28,11 +32,15 @@ One use case might be Qlab putting markers when certain cues are triggered and l
 
 A streamlined version of the above, simply creates a marker named "". This script is largely redundant, as it is already an action in Reaper, but is presented anyway as a reduced version of the above.
 
+----
+
 ## 03 Structure
 
 ### Put selected tracks in new folder track
 
 Adds a new track above the currently selected group of tracks, and indents the current selection 1 level. Can be set to prompt for a name for the new folder, or to leave the name blank.
+
+----
 
 ## 99 Miscellaneous
 
