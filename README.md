@@ -20,13 +20,13 @@ To be customised to toggle arm/disarm a specific set of tracks. Useful when you 
 
 ### Create and name marker
 
-Creates a marker at the time when the script is triggered, which by default asks for user input to name it. Can be easily adapted to use a preset name, and can be easily triggered by midi 
+Creates a marker at the time when the script is triggered, which by default asks for user input to name it. Can be easily adapted to use a preset name, and can be easily triggered by midi.
 
 One use case might be Qlab putting markers when certain cues are triggered and labelling them appropriately.
 
 ### Create marker
 
-A streamlined version of the above, simply creates a marker named "".
+A streamlined version of the above, simply creates a marker named "". This script is largely redundant, as it is already an action in Reaper, but is presented anyway as a reduced version of the above.
 
 ## 03 Structure
 
