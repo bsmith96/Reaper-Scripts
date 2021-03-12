@@ -14,6 +14,10 @@ Now you can set keyboard shortcuts or midi triggers for the scripts.
 
 ## 01 Recording
 
+### Arm All Tracks Within Folders
+
+Automatically arms all tracks in the project, but ignores those which contain other tracks (folders). This allows you to organise your recording session in folders, but still quickly arm all tracks that you want to record onto.
+
 ### Arm Tracks For Recording
 
 To be customised to toggle arm/disarm a specific set of tracks. Useful when you are regularly arming and disarming the same group of tracks, but do not want to arm every track in the project (e.g. recording a multitrack performance, and you have groups or folders).
@@ -24,13 +28,9 @@ To be customised to toggle arm/disarm a specific set of tracks. Useful when you 
 
 ### Create and name marker
 
-Creates a marker at the time when the script is triggered, which by default asks for user input to name it. Can be easily adapted to use a preset name, and can be easily triggered by midi.
+Creates a marker at the time when the script is triggered, which by default asks for user input to name it (like "shift+M"), but crucially, it can be easily adapted to use a preset name, and can be easily triggered by midi.
 
-One use case might be Qlab putting markers when certain cues are triggered and labelling them appropriately.
-
-### Create marker
-
-A streamlined version of the above, simply creates a marker named "". This script is largely redundant, as it is already an action in Reaper, but is presented anyway as a reduced version of the above.
+One use case might be Qlab putting markers when certain cues are triggered and labelling them appropriately. Simply create an action in Reaper – an edited copy of the script, imported into the actions menu – for each specific name (e.g. "START OF SHOW"), and set that to trigger on a certain event (e.g. a particular midi trigger).
 
 ----
 
