@@ -1,6 +1,13 @@
--- Arm tracks for recording ---------------
--- Author: Ben Smith ----------------------
--- Useful when you are regularly arming and disarming the same group of tracks, but do not want to arm every track in the project (e.g. recording a multitrack performance, and you have groups or folders).
+-- @description Arm tracks for recording
+-- @author Ben Smith
+-- @link bensmithsound.uk
+-- @version 1.1
+-- @about Useful when you are regularly arming and disarming the same group of tracks, but do not want to arm every track in the project (e.g. recording a multitrack performance, and you have groups or folders).
+
+-- @changelog
+--   v1.1  + replaced trackToArm(track) function with tracksToArm({tracks})
+--   v1.0  + init
+
 
 -- User customisation area ----------------
 

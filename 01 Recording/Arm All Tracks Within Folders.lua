@@ -1,6 +1,9 @@
--- Arm all tracks within folders ----------
--- Author: Ben Smith ----------------------
--- Automatically arms all tracks, but ignores tracks that contain other tracks.
+-- @description Arm all tracks within folders
+-- @author Ben Smith
+-- @link bensmithsound.uk
+-- @version 1.0
+-- @about Automatically arms all tracks, but ignores folders used for organising your session
+
 
 -- Count tracks in project
 

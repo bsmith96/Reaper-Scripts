@@ -1,6 +1,9 @@
--- Create and name marker -----------------
--- Author: Ben Smith ----------------------
--- Useful to create a new marker when recording. Can be easily called by a midi trigger and can have a default marker name, or can prompt the user to enter one.
+-- @description Create and name marker
+-- @author Ben Smith
+-- @link bensmithsound.uk
+-- @version 1.0
+-- @about Useful to create a new marker when recording. Can be easily called by a midi trigger and can have a default marker name, or can prompt the user to enter one.
+
 
 -- User customisation area ----------------
 

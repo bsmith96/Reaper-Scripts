@@ -1,12 +1,16 @@
--- Put selected tracks in a new folder ----
--- Author: Ben Smith ----------------------
--- Indents the selected tracks into a newly created folder track
+-- @description Put selected tracks in a new folder
+-- @author Ben Smith
+-- @link bensmithsound.uk
+-- @version 1.0
+-- @about Indents the selected tracks into a newly created folder track
+
 
 -- User customisation area ----------------
 
 askForName = true
 
 --------- End of user customisation area --
+
 
 reaper.Undo_BeginBlock()
 
