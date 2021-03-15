@@ -46,8 +46,6 @@ Adds a new track above the currently selected group of tracks, and indents the c
 
 ### VCA Assign Template
 
-An old script for recalling (as if it were a scene on a digital mixing desk) to assign different inputs to a set of VCAs. This is a template.
+A simple script for recalling (as if it were a scene on a digital mixing desk) to assign different inputs to a set of VCAs. This is a template, you create a separate action for every 'scene' you want to recall.
 
-Currently an \*.EEL file but can probably be adapted fairly easily into \*.LUA to work better with git.
-
-
+Designed to emulate mixing a musical multitrack without access to a digital mixing desk, but with simple midi fader controllers. To use them like this, I suggest using Qlab to send midi commands, triggering each scene.
