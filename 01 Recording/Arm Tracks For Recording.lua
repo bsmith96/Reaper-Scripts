@@ -5,7 +5,7 @@
 -- User customisation area ----------------
 
 tracksToArm = {}
-rangeToArm = {}
+rangeToArm = {} -- list only the first and last track number in the range
 
 --------- End of user customisation area --
 

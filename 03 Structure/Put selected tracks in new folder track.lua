@@ -9,6 +9,7 @@ askForName = true
 --------- End of user customisation area --
 
 reaper.Undo_BeginBlock()
+
   ---- Get the required information about the tracks
 
   -- Count selected tracks (relative to 0)
@@ -17,7 +18,7 @@ reaper.Undo_BeginBlock()
   -- Create table for all selected tracks
   tracks = {}
 
-  -- Get user data of last of selected tracks
+  -- Get user data of selected tracks
   for i = 0, selectedTrackCount do
     track = reaper.GetSelectedTrack2(0, i,false)
     table.insert(tracks, reaper.CSurf_TrackToID(track, false))
@@ -45,22 +46,21 @@ reaper.Undo_BeginBlock()
   -- Indent first track of selection by 1
   reaper.SetMediaTrackInfo_Value(firstTrack,"I_FOLDERDEPTH",depthFirst+1)
 
-  -- Select final track of selection
-  reaper.SetOnlyTrackSelected(lastTrack, 1)
-
   -- Return track after selection to previous indent level
   reaper.SetMediaTrackInfo_Value(lastTrack, "I_FOLDERDEPTH", depthLast-1)
 
+
+  ---- Name the folder
+
   if askForName == true then
-    ---- Name the folder [optional]
   
-    -- Get user name for new folder [optional]
+    -- Get user name for new folder
     retval, folderName_csv = reaper.GetUserInputs("New Folder Name", 1, "Folder name:", "")
 
-    -- Convert new track ID into mediatrack [optional]
+    -- Convert new track ID into mediatrack
     newFolder = reaper.CSurf_TrackFromID(insertPoint+1, false)
 
-    -- Name folder [optional]
+    -- Name folder
     reaper.GetSetMediaTrackInfo_String(newFolder, "P_NAME", folderName_csv, 1)
     
     reaper.Undo_EndBlock("Put selected tracks in folder \""..folderName_csv.."\"", 0)
