@@ -8,9 +8,13 @@
 -- User customisation area ----------------
 
 markerName_csv = "" -- Add the name here
-markerTime = reaper.GetPlayPositionEx(0)
 
 --------- End of user customisation area --
+
+
+-- Define marker time
+
+markerTime = reaper.GetPlayPositionEx(0)
 
 
 ---- Functions
