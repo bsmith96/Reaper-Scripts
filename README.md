@@ -42,6 +42,16 @@ Adds a new track above the currently selected group of tracks, and indents the c
 
 ----
 
+## 04 Routing
+
+### Set channel output 1-to-1
+
+Routes all track outputs to the same channel/s as their record inputs, working with both mono and stereo inputs.
+
+Designed for working in live situations, where you record the stems of each input into your mixing desk. Run this script to quickly route all channels back the same way (and unroute the master). Simply change the routing in your mixing desk or in Dante Controller, and you can quickly facilitate Virtual Sound Checks.
+
+----
+
 ## 99 Miscellaneous
 
 ### VCA Assign Template
