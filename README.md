@@ -50,6 +50,10 @@ Routes all track outputs to the same channel/s as their record inputs, working w
 
 Designed for working in live situations, where you record the stems of each input into your mixing desk. Run this script to quickly route all channels back the same way (and unroute the master). Simply change the routing in your mixing desk or in Dante Controller, and you can quickly facilitate Virtual Sound Checks.
 
+### Toggle routing and solo to master
+
+When working with a Virtual Sound Check, this script is designed to quickly listen to a particular channel through the Master (e.g. a "Reaper" input on your mixing desk). Particularly, if one of your tracks is an "as mixed" recording, or a group output, it would be useful to listen back. It routes the selected track/s to master and solos them - and also toggles this back off.
+
 ----
 
 ## 99 Miscellaneous
