@@ -18,7 +18,7 @@ tracksToUse = "all" -- set this to either "all" or "selected"
 
 ---- Functions
 
-function setRouting(trackNum)
+function setRouting(track)
   -- get number of the track's rec input
   trackInput = reaper.GetMediaTrackInfo_Value(track, "I_RECINPUT")
 
