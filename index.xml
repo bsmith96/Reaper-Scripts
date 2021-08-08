@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<index version="1" name="BSmith96 Scripts" commit="00cef1e4b944f1562e5e07c146825bad77d18e2e">
+  <category name="Markers">
+    <reapack name="Locate to marker.lua" type="script" desc="Locate to marker by OSC">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Locate to marker ID via OSC\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Written by Ben Smith - July 2021\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Info\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab The default option for moving the Reaper's playhead to a particular marker only works with the order of markers.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab This script allows you to specify a marker number (i.e. marker ID) to navigate to.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Usage\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Trigger this script via OSC (either a custom command, or /action).\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab As an argument in your OSC command, include the marker ID you wish to locate to divided by 1000.\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab E.g. for marker 21, send {\f1 /action/XXXXXX 0.021}.\sa180\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab This is because the reaper.get_action_context() command will only return the value of an OSC message if it is between 0 and 1.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab The resolution of the interpreted value is 16383.\sa180\par}
+}
+]]></description>
+        <link rel="website" href="https://www.bensmithsound.uk">Author</link>
+        <link rel="website" href="https://github.com/bsmith96/Reaper-Scripts">Repository</link>
+      </metadata>
+      <version name="1.0" author="Ben Smith" time="2021-08-08T22:18:06Z">
+        <changelog><![CDATA[+ Initial version]]></changelog>
+        <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/00cef1e4b944f1562e5e07c146825bad77d18e2e/Markers/Locate%20to%20marker.lua</source>
+      </version>
+    </reapack>
+  </category>
+  <category name="Miscellaneous">
+    <reapack name="VCA Assign Template.lua" type="script" desc="VCA assign template">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 VCA assign template\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Written by Ben Smith - 2018\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Info\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Edit this script to assign tracks to VCA masters. Could be used on midi recalls, to recall 'scenes', fired by Figure 53 Qlab.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Create a copy and a customised version of this script for every 'scene'\sa180\par}
+}
+]]></description>
+        <link rel="website" href="https://www.bensmithsound.uk">Author</link>
+        <link rel="website" href="https://github.com/bsmith96/Reaper-Scripts">Repository</link>
+      </metadata>
+      <version name="2.0" author="Ben Smith" time="2021-08-08T22:18:06Z">
+        <changelog><![CDATA[# Translated EEL script to LUA]]></changelog>
+        <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/00cef1e4b944f1562e5e07c146825bad77d18e2e/Miscellaneous/VCA%20Assign%20Template.lua</source>
+      </version>
+    </reapack>
+  </category>
+  <category name="Recording">
+    <reapack name="Arm All Tracks Within Folders.lua" type="script" desc="Arm all tracks within folders">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Arm all tracks within folders\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Written by Ben Smith - 2021\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Info\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Automatically toggles record arming for all tracks, but ignores folders used for organising your session\sa180\par}
+}
+]]></description>
+        <link rel="website" href="https://www.bensmithsound.uk">Author</link>
+        <link rel="website" href="https://github.com/bsmith96/Reaper-Scripts">Repository</link>
+      </metadata>
+      <version name="1.0" author="Ben Smith" time="2021-08-08T22:18:06Z">
+        <changelog><![CDATA[+ Initial version]]></changelog>
+        <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/00cef1e4b944f1562e5e07c146825bad77d18e2e/Recording/Arm%20All%20Tracks%20Within%20Folders.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Arm Tracks For Recording.lua" type="script" desc="Arm tracks for recording">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Arm tracks for recording\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Written by Ben Smith - 2021\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Info\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Arm a specific set of tracks for recording \u8211-\u160?customise a version of this script for use with your project.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Useful when you are regularly arming and disarming the same group of tracks, but do not want to arm every track in the project (e.g. recording a multitrack performance, and you have groups or folders).\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab "Arm all tracks within folders" is more useful, if that is what you need this for.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 User customisation\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab tracksToArm\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab A list of all tracks you wish to toggle.\sa180\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab rangeToArm\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab A range of tracks which should all be toggled.\sa180\sa180\par}
+}
+]]></description>
+        <link rel="website" href="https://www.bensmithsound.uk">Author</link>
+        <link rel="website" href="https://github.com/bsmith96/Reaper-Scripts">Repository</link>
+      </metadata>
+      <version name="1.1" author="Ben Smith" time="2021-08-08T22:18:06Z">
+        <changelog><![CDATA[# Replaced trackToArm(track) function with tracksToArm({tracks})]]></changelog>
+        <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/00cef1e4b944f1562e5e07c146825bad77d18e2e/Recording/Arm%20Tracks%20For%20Recording.lua</source>
+      </version>
+    </reapack>
+  </category>
+  <category name="Routing">
+    <reapack name="Set channel inputs 1-to-1.lua" type="script" desc="Set channel inputs 1-to-1">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Set channel inputs 1-to-1\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Written by Ben Smith - July 2021\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Info\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Sets the track input channel sequentially, allowing you to set up projects with high channel counts and quickly route the appropriate inputs to them.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab This is ideal for recording live performances, such as concerts or theatre.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Usage\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab All tracks are presumed mono.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab To use stereo tracks, append the names with "--2". Stereo tracks MUST start on odd input, and if one starts on an even input, the script will alert you and skip an input channel.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 User customisation\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab tracksToUse: all / selected.\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Whether to route all tracks or only selected ones.\sa180\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab stereoSuffix: "--2"\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Allows you to customise the naming convention for indicating stereo tracks to the script.\sa180\sa180\par}
+}
+]]></description>
+        <link rel="website" href="https://www.bensmithsound.uk">Author</link>
+        <link rel="website" href="https://github.com/bsmith96/Reaper-Scripts">Repository</link>
+      </metadata>
+      <version name="1.1" author="Ben Smith" time="2021-08-08T22:18:06Z">
+        <changelog><![CDATA[+ Can interpret stereo channels
+- Cannot currently handle stereo channels where tracksToUse is "selected"]]></changelog>
+        <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/00cef1e4b944f1562e5e07c146825bad77d18e2e/Routing/Set%20channel%20inputs%201-to-1.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Set channel outputs 1-to-1.lua" type="script" desc="Set channel outputs 1-to-1">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Set channel outputs 1-to-1\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Written by Ben Smith - 2021\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Info\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Routes tracks to the same output as their input, allowing quick routing for Virtual Sound Checks in live situations.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 User customisation\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab ignoreFolders = true\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab If tracks contain other tracks, the script will ignore these, rather than routing them.\sa180\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab tracksToUse = all / selected\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Decides whether the script should target all tracks in the project, or only the selected tracks.\sa180\sa180\par}
+}
+]]></description>
+        <link rel="website" href="https://www.bensmithsound.uk">Author</link>
+        <link rel="website" href="https://github.com/bsmith96/Reaper-Scripts">Repository</link>
+      </metadata>
+      <version name="1.1" author="Ben Smith" time="2021-08-08T22:18:06Z">
+        <changelog><![CDATA[+ Added the option for routing only selected tracks]]></changelog>
+        <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/00cef1e4b944f1562e5e07c146825bad77d18e2e/Routing/Set%20channel%20outputs%201-to-1.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Toggle routing and solo to master.lua" type="script" desc="Toggle routing and solo to master">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Toggle routing and solo to master\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Written by Ben Smith - 2021\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Info\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Routes the selected track/s to the master and solos them.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Quickly listen to a bus recording while your reaper is routed for Virtual Sound Checks.\sa180\par}
+}
+]]></description>
+        <link rel="website" href="https://www.bensmithsound.uk">Author</link>
+        <link rel="website" href="https://github.com/bsmith96/Reaper-Scripts">Repository</link>
+      </metadata>
+      <version name="1.0" author="Ben Smith" time="2021-08-08T22:18:06Z">
+        <changelog><![CDATA[+ Initial version]]></changelog>
+        <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/00cef1e4b944f1562e5e07c146825bad77d18e2e/Routing/Toggle%20routing%20and%20solo%20to%20master.lua</source>
+      </version>
+    </reapack>
+  </category>
+  <category name="Tracks">
+    <reapack name="Put selected tracks in new folder track.lua" type="script" desc="Put selected tracks in a new folder">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Put selected tracks in a new folder\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Written by Ben Smith - 2021\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Info\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Indents the selected tracks and places a new folder track above them\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Useful for organising large projects quickly.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 User customisation\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab askForName = true\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Sets whether the script automatically asks for a name for the new folder, or simply adds a blank folder.\sa180\sa180\par}
+}
+]]></description>
+        <link rel="website" href="https://www.bensmithsound.uk">Author</link>
+        <link rel="website" href="https://github.com/bsmith96/Reaper-Scripts">Repository</link>
+      </metadata>
+      <version name="1.0" author="Ben Smith" time="2021-08-08T22:18:06Z">
+        <changelog><![CDATA[+ Initial version]]></changelog>
+        <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/00cef1e4b944f1562e5e07c146825bad77d18e2e/Tracks/Put%20selected%20tracks%20in%20new%20folder%20track.lua</source>
+      </version>
+    </reapack>
+  </category>
+</index>
