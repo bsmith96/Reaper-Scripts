@@ -1,12 +1,21 @@
--- @description VCA assign template
--- @author Ben Smith
--- @link bensmithsound.uk
--- @version 2.0
--- @about Edit this script to assign tracks to VCA masters. Could be used on midi recalls, to recall 'scenes', fired by Figure 53 Qlab.
+--[[
+	@description VCA assign template
+	@author Ben Smith
+	@link
+		Author     https://www.bensmithsound.uk
+		Repository https://github.com/bsmith96/Reaper-Scripts
+	@version 2.0
+	@changelog
+		# Translated EEL script to LUA
+	@about
+		# VCA assign template
+		Written by Ben Smith - 2018
 
--- @changelog
---   v2.0  + Translated script to LUA
---   v1.0  + init, EEL script
+		### Info
+		* Edit this script to assign tracks to VCA masters. Could be used on midi recalls, to recall 'scenes', fired by Figure 53 Qlab.
+		* Create a copy and a customised version of this script for every 'scene'
+]]
+
 
 -- User customisation area ----------------
 

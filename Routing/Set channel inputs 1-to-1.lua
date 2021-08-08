@@ -1,14 +1,31 @@
--- @description Set channel inputs 1-to-1
--- @author Ben Smith
--- @link bensmithsound.uk
--- @version 1.1
--- @about Simply sets track input to the same audio input as its track number.
+--[[
+  @description Set channel inputs 1-to-1
+  @author Ben Smith
+  @link
+    Author     https://www.bensmithsound.uk
+    Repository https://github.com/bsmith96/Reaper-Scripts
+  @version 1.1
+  @changelog
+    + Can interpret stereo channels
+    - Cannot currently handle stereo channels where tracksToUse is "selected"
+  @about
+    # Set channel inputs 1-to-1
+    Written by Ben Smith - July 2021
 
--- @changelog
---   v1.1  + can interpret stereo channels
---         + append a channel name with a custom suffix (default "-2") for the script to interpret it as stereo
---         + reaper cannot use even/odd pairs as a stereo input channel - if your numbering calls for this, the script will skip and input channel.
---         + cannot currently handle stereo channels where tracksToUse is "selected"
+    ### Info
+    * Sets the track input channel sequentially, allowing you to set up projects with high channel counts and quickly route the appropriate inputs to them.
+    * This is ideal for recording live performances, such as concerts or theatre.
+
+    ### Usage
+    * All tracks are presumed mono.
+    * To use stereo tracks, append the names with "--2". Stereo tracks MUST start on odd input, and if one starts on an even input, the script will alert you and skip an input channel.
+
+    ### User customisation
+    * tracksToUse: all / selected.
+      * Whether to route all tracks or only selected ones.
+    * stereoSuffix: "--2"
+      * Allows you to customise the naming convention for indicating stereo tracks to the script.
+]]
 
 
 -- User customisation area ----------------

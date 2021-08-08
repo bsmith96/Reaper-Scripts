@@ -1,8 +1,20 @@
--- @description Toggle routing and solo to master
--- @author Ben Smith
--- @link bensmithsound.uk
--- @version 1.0
--- @about Routes the selected track/s to the master and solos it. Quickly listen to a bus recording while your reaper is routed for Virtual Sound Checks
+--[[
+  @description Toggle routing and solo to master
+  @author Ben Smith
+  @link
+    Author     https://www.bensmithsound.uk
+    Repository https://github.com/bsmith96/Reaper-Scripts
+  @version 1.0
+  @changelog
+    + Initial version
+  @about
+    # Toggle routing and solo to master
+    Written by Ben Smith - 2021
+
+    ### Info
+    * Routes the selected track/s to the master and solos them.
+    * Quickly listen to a bus recording while your reaper is routed for Virtual Sound Checks.
+]]
 
 
 -- Run script -----------------------------

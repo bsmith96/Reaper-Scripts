@@ -1,12 +1,27 @@
--- @description Arm tracks for recording
--- @author Ben Smith
--- @link bensmithsound.uk
--- @version 1.1
--- @about Useful when you are regularly arming and disarming the same group of tracks, but do not want to arm every track in the project (e.g. recording a multitrack performance, and you have groups or folders).
+--[[
+	@description Arm tracks for recording
+	@author Ben Smith
+	@link
+		Author     https://www.bensmithsound.uk
+		Repository https://github.com/bsmith96/Reaper-Scripts
+	@version 1.1
+	@changelog
+		# Replaced trackToArm(track) function with tracksToArm({tracks})
+	@about
+		# Arm tracks for recording
+		Written by Ben Smith - 2021
 
--- @changelog
---   v1.1  + replaced trackToArm(track) function with tracksToArm({tracks})
---   v1.0  + init
+		### Info
+		* Arm a specific set of tracks for recording – customise a version of this script for use with your project.
+		* Useful when you are regularly arming and disarming the same group of tracks, but do not want to arm every track in the project (e.g. recording a multitrack performance, and you have groups or folders).
+		* "Arm all tracks within folders" is more useful, if that is what you need this for.
+
+		### User customisation
+		* tracksToArm
+			* A list of all tracks you wish to toggle.
+		* rangeToArm
+			* A range of tracks which should all be toggled.
+]]
 
 
 -- User customisation area ----------------

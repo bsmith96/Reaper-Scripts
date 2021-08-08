@@ -1,11 +1,26 @@
--- @description Set channel outputs 1-to-1
--- @author Ben Smith
--- @link bensmithsound.uk
--- @version 1.1
--- @about Routes tracks to the same output as their input, allowing quick routing for Virtual Sound Checks in live situations.
+--[[
+  @description Set channel outputs 1-to-1
+  @author Ben Smith
+  @link    
+    Author     https://www.bensmithsound.uk
+    Repository https://github.com/bsmith96/Reaper-Scripts
+  @version 1.1
+  @changelog
+    + Added the option for routing only selected tracks
+  @about
+    # Set channel outputs 1-to-1
+    Written by Ben Smith - 2021
 
--- @changelog
---   v1.1  + added the option of routing only selected tracks
+    ### Info
+    * Routes tracks to the same output as their input, allowing quick routing for Virtual Sound Checks in live situations.
+
+    ### User customisation
+    * ignoreFolders = true
+      * If tracks contain other tracks, the script will ignore these, rather than routing them.
+    * tracksToUse = all / selected
+      * Decides whether the script should target all tracks in the project, or only the selected tracks.
+]]
+
 
 -- User customisation area ----------------
 
