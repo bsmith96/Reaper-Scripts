@@ -205,4 +205,24 @@
       </version>
     </reapack>
   </category>
+  <metadata>
+    <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 BSmith96 Scripts - ReaScript\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 These scripts are largely designed for a live sound workflow - quick, easy, large scale multitrack recordings of live performances; facilitating virtual soundchecks; and simply project organisation.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 They are designed to be very adaptable - you can easily alter them to your liking without delving too deeply into the script, and make them work for your current project.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Manual installation\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 One way to do this is to keep the scripts in your project's directory (or a subdirectory), and add the name of the project to the start of the filename. This will allow you to easily find all the associated scripts in the actions menu.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 You can either edit them in an external text editor before loading them into Reaper, or load them first and edit them in the built in ReaScript editor.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Once you've got all the scripts you want in a folder, go to the actions window (press '?') and select "New action...". Select "Load ReaScript" from the dropdown menu, navigate to your folder and highlight them all at once.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Now you can set keyboard shortcuts or midi triggers for the scripts.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Reapack\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 If you download the ReaPack package manager extension for reaper, you can import these scripts automatically, with the added benefit of easy updates and new additions.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Go to Extensions > ReaPack > Manage Repositories, then Import/export > import repository.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 There, paste this link: {\f1 https://raw.githubusercontent.com/bsmith96/Reaper-Scripts/master/index.xml} and you will have imported these scripts to use as you please!\par}
+}
+]]></description>
+  </metadata>
 </index>
