@@ -20,4 +20,4 @@ If you download the ReaPack package manager extension for reaper, you can import
 
 Go to Extensions > ReaPack > Manage Repositories, then Import/export > import repository.
 
-There, paste this link: `https://raw.githubusercontent.com/bsmith96/Reaper-Scripts/master/index.xml` and you will have imported these scripts to use as you please!
+There, paste this link: `https://github.com/bsmith96/Reaper-Scripts/raw/master/index.xml` and you will have imported these scripts to use as you please!
