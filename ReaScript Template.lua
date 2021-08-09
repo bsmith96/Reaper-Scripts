@@ -8,8 +8,8 @@
   @changelog
     + Initial version
   @about
-    # Package name
-    Written by Ben Smith - Month Year
+    # {Package name}
+    Written by Ben Smith - {Month Year}
 
     ### Info
     *
