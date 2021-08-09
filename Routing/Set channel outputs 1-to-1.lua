@@ -4,9 +4,9 @@
   @link    
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.1
+  @version 1.2
   @changelog
-    + Added the option for routing only selected tracks
+    # Updated commenting to make the script easier to navigate
   @about
     # Set channel outputs 1-to-1
     Written by Ben Smith - 2021
@@ -22,7 +22,9 @@
 ]]
 
 
--- User customisation area ----------------
+-- =========================================================
+-- ===============  USER CUSTOMISATION AREA  ===============
+-- =========================================================
 
 ignoreFolders = true -- when true, ignores folder tracks in the project, but still unroutes them from the master. When false, folder tracks will also be routed.
 
@@ -31,7 +33,9 @@ tracksToUse = "all" -- set this to either "all" or "selected"
 --------- End of user customisation area --
 
 
----- Functions
+-- ===========================================
+-- ===============  FUNCTIONS  ===============
+-- ===========================================
 
 function setRouting(track)
   -- get number of the track's rec input
@@ -63,7 +67,9 @@ function setRouting(track)
 end
 
 
--- Run script -----------------------------
+-- ==============================================
+-- ===============  MAIN ROUTINE  ===============
+-- ==============================================
 
 reaper.Undo_BeginBlock()
 

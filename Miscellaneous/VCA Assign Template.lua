@@ -4,9 +4,9 @@
 	@link
 		Author     https://www.bensmithsound.uk
 		Repository https://github.com/bsmith96/Reaper-Scripts
-	@version 2.0
+	@version 2.1
 	@changelog
-		# Translated EEL script to LUA
+		# Updated commenting to make the script easier to navigate
 	@about
 		# VCA assign template
 		Written by Ben Smith - 2018
@@ -17,7 +17,9 @@
 ]]
 
 
--- User customisation area ----------------
+-- =========================================================
+-- ===============  USER CUSTOMISATION AREA  ===============
+-- =========================================================
 
 inputs = 48 -- overall number of system inputs, before VCA tracks.
 vcas = 8 -- overall number of VCA channels.
@@ -27,7 +29,9 @@ vcas = 8 -- overall number of VCA channels.
 --------- End of user customisation area --
 
 
----- Functions
+-- ===========================================
+-- ===============  FUNCTIONS  ===============
+-- ===========================================
 
 function setVCA(track, VCA)
 	tr = reaper.GetTrack(0, (track-1))
@@ -68,7 +72,9 @@ function resetVCA(inputs, vcas)
 end
 
 
--- Run Script -----------------------------
+-- ==============================================
+-- ===============  MAIN ROUTINE  ===============
+-- ==============================================
 
 ---- OPTIONS
 	-- resetVCA(inputs, vcas) # resets all VCAs, mutes all inputs. Use these specific variables

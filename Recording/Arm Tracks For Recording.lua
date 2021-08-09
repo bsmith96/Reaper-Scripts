@@ -4,9 +4,9 @@
 	@link
 		Author     https://www.bensmithsound.uk
 		Repository https://github.com/bsmith96/Reaper-Scripts
-	@version 1.1
+	@version 1.2
 	@changelog
-		# Replaced trackToArm(track) function with tracksToArm({tracks})
+		# Updated commenting to make the script easier to navigate
 	@about
 		# Arm tracks for recording
 		Written by Ben Smith - 2021
@@ -24,7 +24,9 @@
 ]]
 
 
--- User customisation area ----------------
+-- =========================================================
+-- ===============  USER CUSTOMISATION AREA  ===============
+-- =========================================================
 
 tracksToArm = {}
 rangeToArm = {} -- list only the first and last track number in the range
@@ -32,7 +34,9 @@ rangeToArm = {} -- list only the first and last track number in the range
 --------- End of user customisation area --
 
 
----- Functions
+-- ===========================================
+-- ===============  FUNCTIONS  ===============
+-- ===========================================
 
 -- Toggle record arm on a specific track
 
@@ -68,7 +72,9 @@ function armTracks(arrayToArm)
 end
 
 
--- Run Script -----------------------------
+-- ==============================================
+-- ===============  MAIN ROUTINE  ===============
+-- ==============================================
 
 if tracksToArm ~= {} then
 	armTracks(tracksToArm)

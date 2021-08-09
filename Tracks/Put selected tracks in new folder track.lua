@@ -4,9 +4,9 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.0
+  @version 1.1
   @changelog
-    + Initial version
+    # Updated commenting to make the script easier to navigate
   @about
     # Put selected tracks in a new folder
     Written by Ben Smith - 2021
@@ -21,12 +21,18 @@
 ]]
 
 
--- User customisation area ----------------
+-- =========================================================
+-- ===============  USER CUSTOMISATION AREA  ===============
+-- =========================================================
 
 askForName = true
 
 --------- End of user customisation area --
 
+
+-- ==============================================
+-- ===============  MAIN ROUTINE  ===============
+-- ==============================================
 
 reaper.Undo_BeginBlock()
 

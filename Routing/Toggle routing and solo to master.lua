@@ -4,9 +4,9 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.0
+  @version 1.1
   @changelog
-    + Initial version
+    # Updated commenting to make the script easier to navigate
   @about
     # Toggle routing and solo to master
     Written by Ben Smith - 2021
@@ -17,9 +17,9 @@
 ]]
 
 
--- Run script -----------------------------
-
-
+-- ==============================================
+-- ===============  MAIN ROUTINE  ===============
+-- ==============================================
 
 -- count selected tracks
 selectedCount = reaper.CountSelectedTracks(0)

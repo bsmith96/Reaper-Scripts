@@ -4,9 +4,9 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.0
+  @version 1.1
   @changelog
-    + Initial version
+    # Updated commenting to make the script easier to navigate
   @about
     # Arm all tracks within folders
     Written by Ben Smith - 2021
@@ -15,6 +15,10 @@
     * Automatically toggles record arming for all tracks, but ignores folders used for organising your session
 ]]
 
+
+-- ==============================================
+-- ===============  MAIN ROUTINE  ===============
+-- ==============================================
 
 -- Count tracks in project
 

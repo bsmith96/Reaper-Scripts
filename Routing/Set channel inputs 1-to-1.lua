@@ -4,10 +4,9 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.2
+  @version 1.3
   @changelog
-    # Changed stereo track mismatch handling - now creates a pair of mono tracks if a stereo input is not possible.
-    # Improved semantics - difference between "track" and "channel" (within tracks) is now more clear.
+    # Updated commenting to make the script easier to navigate
   @about
     # Set channel inputs 1-to-1
     Written by Ben Smith - July 2021
@@ -32,7 +31,9 @@
 ]]
 
 
--- User customisation area ----------------
+-- =========================================================
+-- ===============  USER CUSTOMISATION AREA  ===============
+-- =========================================================
 
 tracksToUse = "all" -- all or selected
 
@@ -43,7 +44,9 @@ stereoSplitSuffix = {".L", ".R"} -- appended automatically if stereo tracks have
 --------- End of user customisation area --
 
 
----- Functions
+-- ===========================================
+-- ===============  FUNCTIONS  ===============
+-- ===========================================
 
 function checkChannelCount(track)
 
@@ -116,7 +119,9 @@ function setInput(track, input)
 end
 
 
--- Run script -----------------------------
+-- ==============================================
+-- ===============  MAIN ROUTINE  ===============
+-- ==============================================
 
 reaper.Undo_BeginBlock()
 

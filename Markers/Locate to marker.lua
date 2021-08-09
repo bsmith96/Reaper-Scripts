@@ -4,9 +4,9 @@
   @link 
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.0
+  @version 1.1
   @changelog
-    + Initial version
+    # Updated commenting to make the script easier to navigate
   @about
     # Locate to marker ID via OSC
     Written by Ben Smith - July 2021
@@ -24,7 +24,9 @@
 ]]
 
 
--- Run Script -----------------------------
+-- ==============================================
+-- ===============  MAIN ROUTINE  ===============
+-- ==============================================
 
 -- Get the value of the OSC command which triggered this script
 is_new_value,filename,sectionID,cmdID,mode,resolution,val = reaper.get_action_context()
