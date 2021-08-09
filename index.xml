@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="BSmith96 Scripts" commit="00cef1e4b944f1562e5e07c146825bad77d18e2e">
+<index version="1" name="BSmith96 Scripts" commit="681ea857f7a8c40d6c0c05013b7444aa6dcbeb06">
   <category name="Markers">
     <reapack name="Locate to marker.lua" type="script" desc="Locate to marker by OSC">
       <metadata>
@@ -115,12 +115,16 @@
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab This is ideal for recording live performances, such as concerts or theatre.\sa180\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Usage\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab All tracks are presumed mono.\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab To use stereo tracks, append the names with "--2". Stereo tracks MUST start on odd input, and if one starts on an even input, the script will alert you and skip an input channel.\sa180\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab To use stereo tracks, append the names with "--2".\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Stereo tracks MUST start on odd input.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab If your stereo tracks start with an even input (i.e. even/odd pair) the script will create {\i split stereo} tracks, a mono left and a mono right.\sa180\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 User customisation\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab tracksToUse: all / selected.\par}
 {\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Whether to route all tracks or only selected ones.\sa180\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab stereoSuffix: "--2"\par}
-{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Allows you to customise the naming convention for indicating stereo tracks to the script.\sa180\sa180\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Allows you to customise the naming convention for indicating stereo tracks to the script.\sa180\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab stereoSplitSuffix: [" - Left", " - Right"]\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Customise how stereo channels which are split to mono are renamed. e.g. "Left", ".L"\sa180\sa180\par}
 }
 ]]></description>
         <link rel="website" href="https://www.bensmithsound.uk">Author</link>
@@ -130,6 +134,11 @@
         <changelog><![CDATA[+ Can interpret stereo channels
 - Cannot currently handle stereo channels where tracksToUse is "selected"]]></changelog>
         <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/00cef1e4b944f1562e5e07c146825bad77d18e2e/Routing/Set%20channel%20inputs%201-to-1.lua</source>
+      </version>
+      <version name="1.2" author="Ben Smith" time="2021-08-09T10:29:40Z">
+        <changelog><![CDATA[# Changed stereo track mismatch handling - now creates a pair of mono tracks if a stereo input is not possible.
+# Improved semantics - difference between "track" and "channel" (within tracks) is now more clear.]]></changelog>
+        <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/681ea857f7a8c40d6c0c05013b7444aa6dcbeb06/Routing/Set%20channel%20inputs%201-to-1.lua</source>
       </version>
     </reapack>
     <reapack name="Set channel outputs 1-to-1.lua" type="script" desc="Set channel outputs 1-to-1">
