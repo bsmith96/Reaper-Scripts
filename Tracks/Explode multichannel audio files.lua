@@ -4,12 +4,9 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.0.alpha2
+  @version 1.0
   @changelog
-    + Implemented metapackage correctly
-    + Put copy/paste into a function
-    + Names new tracks
-    + Undo blocks
+    - Publish from alpha version
   @metapackage
   @provides
     [main] . > Explode multichannel audio files into folder.lua
