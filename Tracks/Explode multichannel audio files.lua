@@ -4,9 +4,9 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.0
+  @version 1.1
   @changelog
-    - Publish from alpha version
+    # Bug fix to get the correct media item when exploding onto existing tracks
   @metapackage
   @provides
     [main] . > Explode multichannel audio files into folder.lua
@@ -40,10 +40,10 @@ function copyPasteItem(oldTrack, oldItem, newTrack)
   reaper.Main_OnCommand(40698, 0) -- Copy the item
   reaper.SetOnlyTrackSelected(newTrack)
   reaper.Main_OnCommand(40914, 0) -- Set selected track as last touched
-  reaper.Main_OnCommand(40058, 0) -- Paste item
+  newItem = reaper.Main_OnCommand(40058, 0) -- Paste item
 
   -- get new item
-  return reaper.GetTrackMediaItem( newTrack, 0 )
+  return reaper.GetSelectedMediaItem( newItem, 0 )
 end
 
 function nameTrack(originalTrack, track, i)
