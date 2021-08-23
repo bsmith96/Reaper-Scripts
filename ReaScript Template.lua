@@ -34,6 +34,21 @@
 -- ===========================================
 
 
+-- =================================================
+-- ===============  GLOBAL VARIABLES ===============
+-- =================================================
+
+-- get the script's name and directory
+local scriptName = ({reaper.get_action_context()})[2]:match("([^/\\_]+)%.lua$")
+local scriptDirectory = ({reaper.get_action_context()})[2]:sub(1, ({reaper.get_action_context()})[2]:find("\\[^\\]*$"))
+
+
 -- ==============================================
 -- ===============  MAIN ROUTINE  ===============
 -- ==============================================
+
+reaper.Undo_BeginBlock()
+
+
+
+reaper.Undo_EndBlock(scriptName, 0)

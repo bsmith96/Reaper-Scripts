@@ -4,13 +4,17 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.0.alpha1
+  @version 1.0.alpha2
   @changelog
-    + Initial version
+    + Implemented metapackage correctly
+    + Put copy/paste into a function
+    + Names new tracks
+    + Undo blocks
   @metapackage
   @provides
     [main] . > Explode multichannel audio files into folder.lua
-    [main] . > Explode multichannel audio files.lua
+    [main] . > Explode multichannel audio files into new tracks.lua
+    [main] . > Explode multichannel audio files into existing tracks.lua
   @about
     # Explode multichannel audio files non-destructively
     Written by Ben Smith - August 2021
@@ -20,81 +24,115 @@
     * Allows you to either explode a single track into x tracks, or to leave the selected track in place as a folder and place the individual stems inside it.
 
     ### Usage
-    * 
-
-    ### User customisation
-    *
+    * Explodes the selected multichannel audio file onto
+      * A new set of tracks below the current one, muting the original file.
+      * The existing tracks below the current one, muting the original file (e.g. if you have multiple recordings with the same channels).
+      * A new set of tracks in a folder of the current one, muting the original file.
 ]]
-
-
--- =========================================================
--- ===============  USER CUSTOMISATION AREA  ===============
--- =========================================================
-
-
-
---------- End of user customisation area --
 
 
 -- ===========================================
 -- ===============  FUNCTIONS  ===============
 -- ===========================================
 
-
--- ==============================================
--- ===============  MAIN ROUTINE  ===============
--- ==============================================
-
--- get selected track
-selectedTrack = reaper.GetSelectedTrack2(0, 0, false)
-selectedTrackID = reaper.CSurf_TrackToID(selectedTrack, false)
-
--- get selected media item
-selectedItem = reaper.GetSelectedMediaItem(0, 0)
-
--- get selected take
-selectedTake = reaper.GetActiveTake(selectedItem)
-
--- get PCM source
-selectedPCM = reaper.GetMediaItemTake_Source(selectedTake)
-
--- get the number of channels
-channelCount = reaper.GetMediaSourceNumChannels(selectedPCM)
-
-
-for i=0, channelCount - 1 do
-  -- Insert new track
-  reaper.InsertTrackAtIndex( selectedTrackID + i, true )
-  local newTrack = reaper.GetTrack( 0, selectedTrackID + i )
-
-  -- Copy/Paste item
-  reaper.SetOnlyTrackSelected(selectedTrack)
+function copyPasteItem(oldTrack, oldItem, newTrack)
+  reaper.SetOnlyTrackSelected(oldTrack)
   reaper.Main_OnCommand(40289, 0) -- Unselect all media items
-  reaper.SetMediaItemSelected(selectedItem, 1)
+  reaper.SetMediaItemSelected(oldItem, 1)
   reaper.Main_OnCommand(41173, 0) -- Move cursor at item start
   reaper.Main_OnCommand(40698, 0) -- Copy the item
   reaper.SetOnlyTrackSelected(newTrack)
   reaper.Main_OnCommand(40914, 0) -- Set selected track as last touched
   reaper.Main_OnCommand(40058, 0) -- Paste item
 
-  -- Set item channel
-  local newItem = reaper.GetTrackMediaItem( newTrack, 0 )
-  reaper.SetMediaItemTakeInfo_Value( reaper.GetActiveTake( newItem ) , "I_CHANMODE", 3 + i)
-
-  --[[
-    STILL TO DO IN THIS LOOP:
-
-    * Name new tracks.
-    * Differentiate between 2 versions:
-      * For normal explode, delete the original
-      * For explode into folder, indent the new tracks / outdent again at the end, and mute the original
-
-    STILL TO DO GLOBALLY:
-
-    * Undoblocks.
-    * Make sure you can implement the 2 different versions of filename to do something different.
-  ]]
-
+  -- get new item
+  return reaper.GetTrackMediaItem( newTrack, 0 )
 end
 
-reaper.SetMediaItemInfo_Value(selectedItem, "B_MUTE", 1)
+function nameTrack(originalTrack, track, i)
+  _, originalName = reaper.GetSetMediaTrackInfo_String(originalTrack, "P_NAME", "string", 0)
+
+  reaper.GetSetMediaTrackInfo_String(track, "P_NAME", (i+1).." - "..originalName, 1)
+end
+
+
+-- ==================================================
+-- ===============  GLOBAL VARIABLES  ===============
+-- ==================================================
+
+-- get the script's name and directory
+local scriptName = ({reaper.get_action_context()})[2]:match("([^/\\_]+)%.lua$")
+local scriptDirectory = ({reaper.get_action_context()})[2]:sub(1, ({reaper.get_action_context()})[2]:find("\\[^\\]*$"))
+
+
+-- ==============================================
+-- ===============  MAIN ROUTINE  ===============
+-- ==============================================
+
+reaper.Undo_BeginBlock()
+
+  -- get selected track
+  selectedTrack = reaper.GetSelectedTrack2(0, 0, false)
+  selectedTrackID = reaper.CSurf_TrackToID(selectedTrack, false)
+
+  -- get selected media item
+  selectedItem = reaper.GetSelectedMediaItem(0, 0)
+
+  -- get selected take
+  selectedTake = reaper.GetActiveTake(selectedItem)
+
+  -- get PCM source
+  selectedPCM = reaper.GetMediaItemTake_Source(selectedTake)
+
+  -- get the number of channels
+  channelCount = reaper.GetMediaSourceNumChannels(selectedPCM)
+
+
+  for i=0, channelCount - 1 do
+    if scriptName:find("into new tracks") then
+      -- insert new track
+      reaper.InsertTrackAtIndex( selectedTrackID + i, true )
+      local newTrack = reaper.GetTrack( 0, selectedTrackID + i )
+
+      -- copy/Paste item
+      local newItem = copyPasteItem(selectedTrack, selectedItem, newTrack)
+
+      -- set item channel
+      reaper.SetMediaItemTakeInfo_Value( reaper.GetActiveTake( newItem ) , "I_CHANMODE", 3 + i)
+
+      -- name track
+      nameTrack(selectedTrack, newTrack, i)
+    elseif scriptName:find("into existing tracks") then
+      -- copy/paste item
+      local newItem = copyPasteItem(selectedTrack, selectedItem, reaper.CSurf_TrackFromID(selectedTrackID + 1 + i, false))
+
+      -- set item channel
+      reaper.SetMediaItemTakeInfo_Value( reaper.GetActiveTake( newItem ) , "I_CHANMODE", 3 + i)
+    elseif scriptName:find("into folder") then
+      -- insert new track
+      reaper.InsertTrackAtIndex( selectedTrackID + i, true )
+      local newTrack = reaper.GetTrack( 0, selectedTrackID + i )
+
+      -- put new track in a folder of the first track
+      oldDepth = reaper.GetMediaTrackInfo_Value(selectedTrack, "I_FOLDERDEPTH") -- check original depth
+      if i == 0 then
+        reaper.SetMediaTrackInfo_Value(selectedTrack, "I_FOLDERDEPTH", 1) -- indents the first new track
+      elseif i == (channelCount - 1) then
+        reaper.SetMediaTrackInfo_Value(newTrack, "I_FOLDERDEPTH", - 1) -- ends the folder after the last new track
+      end
+
+      -- Copy/Paste item
+      local newItem = copyPasteItem(selectedTrack, selectedItem, newTrack)
+
+      -- Set item channel
+      reaper.SetMediaItemTakeInfo_Value( reaper.GetActiveTake( newItem ) , "I_CHANMODE", 3 + i)
+
+      -- name track
+      nameTrack(selectedTrack, newTrack, i)
+    end  
+
+  end
+
+  reaper.SetMediaItemInfo_Value(selectedItem, "B_MUTE", 1) -- mute the original file
+
+reaper.Undo_EndBlock(scriptName, 0)
