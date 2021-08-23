@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="BSmith96 Scripts" commit="3eb8b895a23b010db100e28cde67c6c8d16dc4da">
+<index version="1" name="BSmith96 Scripts" commit="1f0808c76185a1b61d47b9f89be97e9630844a56">
   <category name="Markers">
     <reapack name="Locate to marker.lua" type="script" desc="Locate to marker by OSC">
       <metadata>
@@ -251,6 +251,12 @@
         <source main="main" file="Explode multichannel audio files into folder.lua">https://github.com/bsmith96/Reaper-Scripts/raw/3eb8b895a23b010db100e28cde67c6c8d16dc4da/Tracks/Explode%20multichannel%20audio%20files.lua</source>
         <source main="main" file="Explode multichannel audio files into new tracks.lua">https://github.com/bsmith96/Reaper-Scripts/raw/3eb8b895a23b010db100e28cde67c6c8d16dc4da/Tracks/Explode%20multichannel%20audio%20files.lua</source>
         <source main="main" file="Explode multichannel audio files into existing tracks.lua">https://github.com/bsmith96/Reaper-Scripts/raw/3eb8b895a23b010db100e28cde67c6c8d16dc4da/Tracks/Explode%20multichannel%20audio%20files.lua</source>
+      </version>
+      <version name="1.0" author="Ben Smith" time="2021-08-23T08:52:27Z">
+        <changelog><![CDATA[- Publish from alpha version]]></changelog>
+        <source main="main" file="Explode multichannel audio files into folder.lua">https://github.com/bsmith96/Reaper-Scripts/raw/1f0808c76185a1b61d47b9f89be97e9630844a56/Tracks/Explode%20multichannel%20audio%20files.lua</source>
+        <source main="main" file="Explode multichannel audio files into new tracks.lua">https://github.com/bsmith96/Reaper-Scripts/raw/1f0808c76185a1b61d47b9f89be97e9630844a56/Tracks/Explode%20multichannel%20audio%20files.lua</source>
+        <source main="main" file="Explode multichannel audio files into existing tracks.lua">https://github.com/bsmith96/Reaper-Scripts/raw/1f0808c76185a1b61d47b9f89be97e9630844a56/Tracks/Explode%20multichannel%20audio%20files.lua</source>
       </version>
     </reapack>
     <reapack name="Put selected tracks in new folder track.lua" type="script" desc="Put selected tracks in a new folder">
