@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="BSmith96 Scripts" commit="4d9ef71f5310434c551a90d2e387507e9b82582e">
+<index version="1" name="BSmith96 Scripts" commit="3eb8b895a23b010db100e28cde67c6c8d16dc4da">
   <category name="Markers">
     <reapack name="Locate to marker.lua" type="script" desc="Locate to marker by OSC">
       <metadata>
@@ -229,9 +229,10 @@
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Quickly explode multichannel audio files into individual tracks.\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Allows you to either explode a single track into x tracks, or to leave the selected track in place as a folder and place the individual stems inside it.\sa180\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Usage\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab \sa180\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 User customisation\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab \sa180\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Explodes the selected multichannel audio file onto\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab A new set of tracks below the current one, muting the original file.\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab The existing tracks below the current one, muting the original file (e.g. if you have multiple recordings with the same channels).\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab A new set of tracks in a folder of the current one, muting the original file.\sa180\sa180\par}
 }
 ]]></description>
         <link rel="website" href="https://www.bensmithsound.uk">Author</link>
@@ -241,6 +242,15 @@
         <changelog><![CDATA[+ Initial version]]></changelog>
         <source main="main" file="Explode multichannel audio files into folder.lua">https://github.com/bsmith96/Reaper-Scripts/raw/4d9ef71f5310434c551a90d2e387507e9b82582e/Tracks/Explode%20multichannel%20audio%20files.lua</source>
         <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/4d9ef71f5310434c551a90d2e387507e9b82582e/Tracks/Explode%20multichannel%20audio%20files.lua</source>
+      </version>
+      <version name="1.0.alpha2" author="Ben Smith" time="2021-08-23T08:46:54Z">
+        <changelog><![CDATA[+ Implemented metapackage correctly
++ Put copy/paste into a function
++ Names new tracks
++ Undo blocks]]></changelog>
+        <source main="main" file="Explode multichannel audio files into folder.lua">https://github.com/bsmith96/Reaper-Scripts/raw/3eb8b895a23b010db100e28cde67c6c8d16dc4da/Tracks/Explode%20multichannel%20audio%20files.lua</source>
+        <source main="main" file="Explode multichannel audio files into new tracks.lua">https://github.com/bsmith96/Reaper-Scripts/raw/3eb8b895a23b010db100e28cde67c6c8d16dc4da/Tracks/Explode%20multichannel%20audio%20files.lua</source>
+        <source main="main" file="Explode multichannel audio files into existing tracks.lua">https://github.com/bsmith96/Reaper-Scripts/raw/3eb8b895a23b010db100e28cde67c6c8d16dc4da/Tracks/Explode%20multichannel%20audio%20files.lua</source>
       </version>
     </reapack>
     <reapack name="Put selected tracks in new folder track.lua" type="script" desc="Put selected tracks in a new folder">
