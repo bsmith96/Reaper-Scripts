@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="BSmith96 Scripts" commit="eddd77a995adea8d29c88daaae40c4f32f63bcf9">
+<index version="1" name="BSmith96 Scripts" commit="5c32855b1dfb05c649af2b9ad4ebbe088de9fd03">
   <category name="Markers">
     <reapack name="Locate to marker.lua" type="script" desc="Locate to marker by OSC">
       <metadata>
@@ -275,10 +275,8 @@
 {\pard \ql \f0 \sa180 \li0 \fi0 Written by Ben Smith - 2021\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Info\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Indents the selected tracks and places a new folder track above them\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Useful for organising large projects quickly.\sa180\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 User customisation\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab askForName = true\par}
-{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Sets whether the script automatically asks for a name for the new folder, or simply adds a blank folder.\sa180\sa180\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Useful for organising large projects quickly.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab 2 versions - Reaper can prompt you for a name for the new folder or leave it empty.\sa180\par}
 }
 ]]></description>
         <link rel="website" href="https://www.bensmithsound.uk">Author</link>
@@ -291,6 +289,11 @@
       <version name="1.1" author="Ben Smith" time="2021-08-09T12:30:32Z">
         <changelog><![CDATA[# Updated commenting to make the script easier to navigate]]></changelog>
         <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/3a64b41837b2b92c0ea4982a40321d046882e453/Tracks/Put%20selected%20tracks%20in%20new%20folder%20track.lua</source>
+      </version>
+      <version name="1.2" author="Ben Smith" time="2021-09-02T21:09:44Z">
+        <changelog><![CDATA[# Removed user customisation in favour of providing 2 separate scripts - either prompt for name or do not.]]></changelog>
+        <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/5c32855b1dfb05c649af2b9ad4ebbe088de9fd03/Tracks/Put%20selected%20tracks%20in%20new%20folder%20track.lua</source>
+        <source main="main" file="Put selected tracks in new folder track and ask for name.lua">https://github.com/bsmith96/Reaper-Scripts/raw/5c32855b1dfb05c649af2b9ad4ebbe088de9fd03/Tracks/Put%20selected%20tracks%20in%20new%20folder%20track.lua</source>
       </version>
     </reapack>
   </category>
