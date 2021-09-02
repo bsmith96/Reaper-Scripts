@@ -4,9 +4,13 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.1
+  @version 1.2
   @changelog
-    # Updated commenting to make the script easier to navigate
+    # Removed user customisation in favour of providing 2 separate scripts - either prompt for name or do not.
+  @metapackage
+  @provides
+    [main] . > Put selected tracks in new folder track.lua
+    [main] . > Put selected tracks in new folder track and ask for name.lua
   @about
     # Put selected tracks in a new folder
     Written by Ben Smith - 2021
@@ -14,20 +18,17 @@
     ### Info
     * Indents the selected tracks and places a new folder track above them
     * Useful for organising large projects quickly.
-
-    ### User customisation
-    * askForName = true
-      * Sets whether the script automatically asks for a name for the new folder, or simply adds a blank folder.
+    * 2 versions - Reaper can prompt you for a name for the new folder or leave it empty.
 ]]
 
 
--- =========================================================
--- ===============  USER CUSTOMISATION AREA  ===============
--- =========================================================
+-- ==================================================
+-- ===============  GLOBAL VARIABLES  ===============
+-- ==================================================
 
-askForName = true
-
---------- End of user customisation area --
+-- get the script's name and directory
+local scriptName = ({reaper.get_action_context()})[2]:match("([^/\\_]+)%.lua$")
+local scriptDirectory = ({reaper.get_action_context()})[2]:sub(1, ({reaper.get_action_context()})[2]:find("\\[^\\]*$"))
 
 
 -- ==============================================
@@ -78,7 +79,7 @@ reaper.Undo_BeginBlock()
 
   ---- Name the folder
 
-  if askForName == true then
+  if scriptName:find("ask for name") then
   
     -- Get user name for new folder
     retval, folderName_csv = reaper.GetUserInputs("New Folder Name", 1, "Folder name:", "")
