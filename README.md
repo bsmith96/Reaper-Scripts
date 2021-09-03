@@ -1,5 +1,7 @@
 # BSmith96 Scripts - ReaScript
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F120U9I)
+
 These scripts are largely designed for a live sound workflow - quick, easy, large scale multitrack recordings of live performances; facilitating virtual soundchecks; and simply project organisation.
 
 They are designed to be very adaptable - you can easily alter them to your liking without delving too deeply into the script, and make them work for your current project.
