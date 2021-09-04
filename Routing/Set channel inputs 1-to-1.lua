@@ -4,9 +4,10 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.3
+  @version 1.4
   @changelog
-    # Updated commenting to make the script easier to navigate
+    # Fixed bug which intepreted any hyphen in track names as a stereo indicator
+    # WIP started on further metapackag implementation - commented out
   @about
     # Set channel inputs 1-to-1
     Written by Ben Smith - July 2021
@@ -26,7 +27,7 @@
       * Whether to route all tracks or only selected ones.
     * stereoSuffix: "--2"
       * Allows you to customise the naming convention for indicating stereo tracks to the script.
-    * stereoSplitSuffix: [" - Left", " - Right"]
+    * stereoSplitSuffix: [".L", ".R"]
       * Customise how stereo channels which are split to mono are renamed. e.g. "Left", ".L"
 ]]
 
@@ -44,17 +45,24 @@ stereoSplitSuffix = {".L", ".R"} -- appended automatically if stereo tracks have
 --------- End of user customisation area --
 
 
+-- ==================================================
+-- ===============  GLOBAL VARIABLES  ===============
+-- ==================================================
+
+-- get the script's name and directory
+local scriptName = ({reaper.get_action_context()})[2]:match("([^/\\_]+)%.lua$")
+local scriptDirectory = ({reaper.get_action_context()})[2]:sub(1, ({reaper.get_action_context()})[2]:find("\\[^\\]*$"))
+
+
 -- ===========================================
 -- ===============  FUNCTIONS  ===============
 -- ===========================================
 
 function checkChannelCount(track)
 
-  -- if track name ends with " - 2" interpret it as a stereo channel
-  retval, trackName = reaper.GetSetMediaTrackInfo_String(track, "P_NAME", 0, false)
-  stereoSuffixReversed = string.reverse(stereoSuffix)
-  stereoSuffixReversed = stereoSuffixReversed..".*"
-  if string.match(string.reverse(trackName), stereoSuffixReversed) then
+  -- if track name ends with "--2" interpret it as a stereo channel
+  _, trackName = reaper.GetSetMediaTrackInfo_String(track, "P_NAME", 0, false)
+  if trackName:find(stereoSuffix, -3) then
     return "Stereo", trackName
   else
     return "Mono", trackName
@@ -143,6 +151,18 @@ reaper.Undo_BeginBlock()
           reaper.SetMediaTrackInfo_Value(track, "I_RECINPUT", i-1)
         end
       end
+      --[[if scriptName:find("selected tracks") then
+        if reaper.IsTrackSelected(track) == true then
+          reaper.SetMediaTrackInfo_Value(track, "I_RECINPUT", i-1)
+        end
+      elseif scriptName:find("ignoring folders") then
+        trackDepth = reaper.GetMediaTrackInfo_Value(track, "I_FOLDERDEPTH")
+        if trackDepth <= 0.0 then
+          setRouting(track, trackNum)
+        end
+      else
+        setRouting(track, trackNum)
+      end]] -- WORK IN PROGRESS
     end
     
-reaper.Undo_EndBlock("Route channel inputs 1-to-1", 0)
+reaper.Undo_EndBlock(scriptName, 0)
