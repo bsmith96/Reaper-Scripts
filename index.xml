@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="BSmith96 Scripts" commit="5c32855b1dfb05c649af2b9ad4ebbe088de9fd03">
+<index version="1" name="BSmith96 Scripts" commit="aed1f5945394d3ee2b9cb143055f8e27c4377603">
   <category name="Markers">
     <reapack name="Locate to marker.lua" type="script" desc="Locate to marker by OSC">
       <metadata>
@@ -84,6 +84,13 @@
         <changelog><![CDATA[# Updated commenting to make the script easier to navigate]]></changelog>
         <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/3a64b41837b2b92c0ea4982a40321d046882e453/Recording/Arm%20All%20Tracks%20Within%20Folders.lua</source>
       </version>
+      <version name="1.2" author="Ben Smith" time="2021-09-04T14:29:59Z">
+        <changelog><![CDATA[+ Now metapackage to choose between arm, disarm and toggle arm
++ Added undo block]]></changelog>
+        <source main="main" file="Rec arm all tracks within folders.lua">https://github.com/bsmith96/Reaper-Scripts/raw/aed1f5945394d3ee2b9cb143055f8e27c4377603/Recording/Arm%20All%20Tracks%20Within%20Folders.lua</source>
+        <source main="main" file="Rec disarm tracks within folders.lua">https://github.com/bsmith96/Reaper-Scripts/raw/aed1f5945394d3ee2b9cb143055f8e27c4377603/Recording/Arm%20All%20Tracks%20Within%20Folders.lua</source>
+        <source main="main" file="Rec toggle tracks within folders.lua">https://github.com/bsmith96/Reaper-Scripts/raw/aed1f5945394d3ee2b9cb143055f8e27c4377603/Recording/Arm%20All%20Tracks%20Within%20Folders.lua</source>
+      </version>
     </reapack>
     <reapack name="Arm Tracks For Recording.lua" type="script" desc="Arm tracks for recording">
       <metadata>
@@ -139,7 +146,7 @@
 {\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Whether to route all tracks or only selected ones.\sa180\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab stereoSuffix: "--2"\par}
 {\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Allows you to customise the naming convention for indicating stereo tracks to the script.\sa180\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab stereoSplitSuffix: [" - Left", " - Right"]\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab stereoSplitSuffix: [".L", ".R"]\par}
 {\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Customise how stereo channels which are split to mono are renamed. e.g. "Left", ".L"\sa180\sa180\par}
 }
 ]]></description>
@@ -159,6 +166,11 @@
       <version name="1.3" author="Ben Smith" time="2021-08-09T12:30:32Z">
         <changelog><![CDATA[# Updated commenting to make the script easier to navigate]]></changelog>
         <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/3a64b41837b2b92c0ea4982a40321d046882e453/Routing/Set%20channel%20inputs%201-to-1.lua</source>
+      </version>
+      <version name="1.4" author="Ben Smith" time="2021-09-04T14:29:48Z">
+        <changelog><![CDATA[# Fixed bug which intepreted any hyphen in track names as a stereo indicator
+# WIP started on further metapackag implementation - commented out]]></changelog>
+        <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/c1e9865236a1d6755254a57a5ce400cdd2222f5e/Routing/Set%20channel%20inputs%201-to-1.lua</source>
       </version>
     </reapack>
     <reapack name="Set channel outputs 1-to-1.lua" type="script" desc="Set channel outputs 1-to-1">
