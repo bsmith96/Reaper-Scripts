@@ -4,10 +4,9 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.4
+  @version 1.5
   @changelog
-    # Fixed bug which intepreted any hyphen in track names as a stereo indicator
-    # WIP started on further metapackag implementation - commented out
+    # Better bug fix for the previous bug, for correct implementation of the stereo suffix
   @about
     # Set channel inputs 1-to-1
     Written by Ben Smith - July 2021
@@ -62,7 +61,7 @@ function checkChannelCount(track)
 
   -- if track name ends with "--2" interpret it as a stereo channel
   _, trackName = reaper.GetSetMediaTrackInfo_String(track, "P_NAME", 0, false)
-  if trackName:find(stereoSuffix, -3) then
+  if trackName:sub(-#stereoSuffix) == stereoSuffix then
     return "Stereo", trackName
   else
     return "Mono", trackName
@@ -86,7 +85,7 @@ function setRouting(track, i)
       -- set input
       setInput(track, trackInput)
       -- rename track (remove suffix)
-      trackName = string.sub(trackName, 1, 0-(string.len(stereoSuffix)+1))
+      trackName = string.sub(trackName, 1, 0-(stereoSuffix:len()+1))
       reaper.GetSetMediaTrackInfo_String(track, "P_NAME", trackName, true)
       -- update stereoOffset
       stereoOffset = stereoOffset+1
@@ -106,11 +105,11 @@ function setRouting(track, i)
       setInput(trackLeft, trackInputLeft)
       setInput(trackRight, trackInputRight)
       -- rename the tracks
-      trackName = string.sub(trackName, 1, 0-(string.len(stereoSuffix)+1))
+      trackName = string.sub(trackName, 1, 0-(stereoSuffix:len()+1))
       reaper.GetSetMediaTrackInfo_String(trackLeft, "P_NAME", trackName..stereoSplitSuffix[1], true)
       reaper.GetSetMediaTrackInfo_String(trackRight, "P_NAME", trackName..stereoSplitSuffix[2], true)
       -- inform the user
-      reaper.ShowMessageBox("Track "..trackName.." requires a stereo input from an even/odd pair of channels. This is not doable, so the script has split this stereo track into 2 mono tracks.", "Routing mismatch", 0)
+      reaper.ShowMessageBox("Track "..trackName.." requires a stereo input from an even/odd pair of channels. This is not doable, so the script has split this stereo track into 2 mono tracks.", "Routing Mismatch - Track '"..trackName.."'", 0)
       -- update trackOffset
       trackOffset = trackOffset+1
     end
