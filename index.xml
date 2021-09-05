@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="BSmith96 Scripts" commit="aed1f5945394d3ee2b9cb143055f8e27c4377603">
+<index version="1" name="BSmith96 Scripts" commit="99843e807f248bc26515fc92c5bf979c10525c1a">
   <category name="Markers">
     <reapack name="Locate to marker.lua" type="script" desc="Locate to marker by OSC">
       <metadata>
@@ -171,6 +171,10 @@
         <changelog><![CDATA[# Fixed bug which intepreted any hyphen in track names as a stereo indicator
 # WIP started on further metapackag implementation - commented out]]></changelog>
         <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/c1e9865236a1d6755254a57a5ce400cdd2222f5e/Routing/Set%20channel%20inputs%201-to-1.lua</source>
+      </version>
+      <version name="1.5" author="Ben Smith" time="2021-09-05T21:06:32Z">
+        <changelog><![CDATA[# Better bug fix for the previous bug, for correct implementation of the stereo suffix]]></changelog>
+        <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/99843e807f248bc26515fc92c5bf979c10525c1a/Routing/Set%20channel%20inputs%201-to-1.lua</source>
       </version>
     </reapack>
     <reapack name="Set channel outputs 1-to-1.lua" type="script" desc="Set channel outputs 1-to-1">
