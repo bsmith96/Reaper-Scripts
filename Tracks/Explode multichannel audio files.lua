@@ -4,9 +4,9 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.1
+  @version 1.2
   @changelog
-    # Bug fix to get the correct media item when exploding onto existing tracks
+    # Always puts new items on the correct tracks regardless of which track is selected
   @metapackage
   @provides
     [main] . > Explode multichannel audio files into folder.lua
@@ -68,12 +68,12 @@ local scriptDirectory = ({reaper.get_action_context()})[2]:sub(1, ({reaper.get_a
 
 reaper.Undo_BeginBlock()
 
-  -- get selected track
-  selectedTrack = reaper.GetSelectedTrack2(0, 0, false)
-  selectedTrackID = reaper.CSurf_TrackToID(selectedTrack, false)
-
   -- get selected media item
   selectedItem = reaper.GetSelectedMediaItem(0, 0)
+
+  -- get selected track
+  selectedTrack = reaper.GetMediaItem_Track(selectedItem)
+  selectedTrackID = reaper.CSurf_TrackToID(selectedTrack, 0)
 
   -- get selected take
   selectedTake = reaper.GetActiveTake(selectedItem)
