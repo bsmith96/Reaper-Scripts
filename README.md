@@ -1,5 +1,8 @@
 # BSmith96 Scripts - ReaScript
 
+[![check](https://github.com/bsmith96/Reaper-Scripts/actions/workflows/check.yml/badge.svg)](https://github.com/bsmith96/Reaper-Scripts/actions/workflows/check.yml)
+[![deploy](https://github.com/bsmith96/Reaper-Scripts/actions/workflows/deploy.yml/badge.svg)](https://github.com/bsmith96/Reaper-Scripts/actions/workflows/deploy.yml)
+
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F120U9I)
 
 These scripts are largely designed for a live sound workflow - quick, easy, large scale multitrack recordings of live performances; facilitating virtual soundchecks; and simply project organisation.
