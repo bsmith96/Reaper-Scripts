@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="BSmith96 Scripts" commit="7c55475a3b024c097f6f8b100d516f8532c11678">
+<index version="1" name="BSmith96 Scripts" commit="eef3147bb7dfb827309df3000ce77d823fe18d79">
   <category name="Markers">
     <reapack name="Locate to marker.lua" type="script" desc="Locate to marker by OSC">
       <metadata>
@@ -54,6 +54,7 @@
 {\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab baseline value = far left\par}
 {\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab LFO = true\par}
 {\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Shape = sine\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Tempo sync = true\par}
 {\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Speed = 2\par}
 {\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Strength = 100\par}
 {\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Phase = 0.25\par}
@@ -64,6 +65,7 @@
 {\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab baseline value = far left\par}
 {\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab LFO = true\par}
 {\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Shape = sine\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Tempo sync = true\par}
 {\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Speed = 2\par}
 {\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Strength = 100\par}
 {\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Phase = 0.5\par}
@@ -83,6 +85,10 @@
       <version name="1.0" author="Ben Smith" time="2021-09-27T17:34:10Z">
         <changelog><![CDATA[+ Translated from EEL, improved documentation]]></changelog>
         <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/7c55475a3b024c097f6f8b100d516f8532c11678/Miscellaneous/Set%20tempo%20template.lua</source>
+      </version>
+      <version name="1.1" author="Ben Smith" time="2021-09-27T17:40:21Z">
+        <changelog><![CDATA[+ Update documentation, in particular "Usage"]]></changelog>
+        <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/eef3147bb7dfb827309df3000ce77d823fe18d79/Miscellaneous/Set%20tempo%20template.lua</source>
       </version>
     </reapack>
     <reapack name="VCA Assign Template.lua" type="script" desc="VCA assign template">
