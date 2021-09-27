@@ -1,18 +1,24 @@
 --[[
-  @description Set channel inputs 1-to-1
+  @description Set track inputs 1-to-1
   @author Ben Smith
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.5
+  @version 2.0
   @changelog
-    # Better bug fix for the previous bug, for correct implementation of the stereo suffix
+    + Now a metapackage, allowing easy launching of different versions of the script
+    # Renamed package from "set channel inputs 1-to-1" to "set track inputs 1-to-1", for correct semantics.
+  @metapackage
+  @provides
+    [main] . > Set track inputs 1-to-1.lua
+    [main] . > Set track inputs 1-to-1 for selected tracks.lua
+    [main] . > Set track inputs 1-to-1 ignoring folders.lua
   @about
-    # Set channel inputs 1-to-1
+    # Set track inputs 1-to-1
     Written by Ben Smith - July 2021
 
     ### Info
-    * Sets the track input channel sequentially, allowing you to set up projects with high channel counts and quickly route the appropriate inputs to them.
+    * Sets the track input channel sequentially, allowing you to set up projects with high track counts and quickly route the appropriate inputs to them.
     * This is ideal for recording live performances, such as concerts or theatre.
 
     ### Usage
@@ -22,20 +28,25 @@
     * If your stereo tracks start with an even input (i.e. even/odd pair) the script will create *split stereo* tracks, a mono left and a mono right.
 
     ### User customisation
-    * tracksToUse: all / selected.
-      * Whether to route all tracks or only selected ones.
     * stereoSuffix: "--2"
       * Allows you to customise the naming convention for indicating stereo tracks to the script.
     * stereoSplitSuffix: [".L", ".R"]
-      * Customise how stereo channels which are split to mono are renamed. e.g. "Left", ".L"
+      * Customise how stereo tracks which are split to mono are renamed. e.g. "Left", ".L"
+
+    ### Metapackage
+    * Set track inputs 1-to-1
+      * Sets every track input to the track number
+    * Set track inputs 1-to-1 for selected tracks
+      * Only affects selected tracks
+    * Set track inputs 1-to-1 ignoring folders
+      * Assumes folders are used simply for structure, and does not include these.
+      * If track 1 is a folder and track 2 is not, track 2 will use input 1.
 ]]
 
 
 -- =========================================================
 -- ===============  USER CUSTOMISATION AREA  ===============
 -- =========================================================
-
-tracksToUse = "all" -- all or selected
 
 stereoSuffix = "--2" -- suffix appended to tracks to be given stereo inputs
 
@@ -59,7 +70,7 @@ local scriptDirectory = ({reaper.get_action_context()})[2]:sub(1, ({reaper.get_a
 
 function checkChannelCount(track)
 
-  -- if track name ends with "--2" interpret it as a stereo channel
+  -- if track name ends with "--2" interpret it as a stereo track
   _, trackName = reaper.GetSetMediaTrackInfo_String(track, "P_NAME", 0, false)
   if trackName:sub(-#stereoSuffix) == stereoSuffix then
     return "Stereo", trackName
@@ -114,7 +125,7 @@ function setRouting(track, i)
       trackOffset = trackOffset+1
     end
 
-  -- if the channel is mono 
+  -- if the track is mono 
   else
     setInput(track, trackInput)
   end
@@ -134,6 +145,7 @@ reaper.Undo_BeginBlock()
 
     stereoOffset = 0
     trackOffset = 0
+    folderOffset = 0
 
     -- count tracks in the project
     trackCount = reaper.CountTracks(0)
@@ -143,25 +155,20 @@ reaper.Undo_BeginBlock()
     do
       trackNum = i+trackOffset -- trackOffset accounts for additional split-stereo tracks created by the script
       track = reaper.GetTrack(0, trackNum-1)
-      if tracksToUse == "all" then
-        setRouting(track, trackNum)
-      elseif tracksToUse == "selected" then
-        if reaper.IsTrackSelected(track) == true then
-          reaper.SetMediaTrackInfo_Value(track, "I_RECINPUT", i-1)
-        end
-      end
-      --[[if scriptName:find("selected tracks") then
+      if scriptName:find("selected tracks") then
         if reaper.IsTrackSelected(track) == true then
           reaper.SetMediaTrackInfo_Value(track, "I_RECINPUT", i-1)
         end
       elseif scriptName:find("ignoring folders") then
         trackDepth = reaper.GetMediaTrackInfo_Value(track, "I_FOLDERDEPTH")
         if trackDepth <= 0.0 then
-          setRouting(track, trackNum)
+          setRouting(track, trackNum-folderOffset)
+        else
+          folderOffset = folderOffset+1
         end
       else
         setRouting(track, trackNum)
-      end]] -- WORK IN PROGRESS
+      end
     end
     
 reaper.Undo_EndBlock(scriptName, 0)
