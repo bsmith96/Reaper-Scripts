@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="BSmith96 Scripts" commit="d493e810749031d5d66f2f580b2d5c097a6d782a">
+<index version="1" name="BSmith96 Scripts" commit="7c55475a3b024c097f6f8b100d516f8532c11678">
   <category name="Markers">
     <reapack name="Locate to marker.lua" type="script" desc="Locate to marker by OSC">
       <metadata>
@@ -34,6 +34,57 @@
     </reapack>
   </category>
   <category name="Miscellaneous">
+    <reapack name="Set tempo template.lua" type="script" desc="Set tempo template">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Set tempo template\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Written by Ben Smith - September 2021\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Info\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Designed for when using Reaper's built in LFO to control an autopanner, possibly in a live situation as an insert.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Edit this script with the tempo you want the autopanner to run at (for example, the tempo or your click track) and trigger it at the start of a bar.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Usage\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Use ReaSurround as an insert on an "autopanner" track.\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab This track should have its input (ideally mono) fed from a mix on your mixing desk, and should output to each of your 5.1 or 7.1 surround sends.\sa180\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Click Param > FX parameter list > Parameter modulation/midi link\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab in 1 X\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Enable parameter modulation = true\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab baseline value = far left\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab LFO = true\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Shape = sine\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Speed = 2\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Strength = 100\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Phase = 0.25\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Direction = positive\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Phase reset = on seek/loop\sa180\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab in 1 Y\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Enable parameter modulation = true\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab baseline value = far left\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab LFO = true\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Shape = sine\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Speed = 2\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Strength = 100\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Phase = 0.5\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Direction = positive\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Phase reset = on seek/loop\sa180\sa180\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 User customisation\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab userBPM\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab The user's tempo of choice\sa180\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab rotationsPerBeat\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab How many rotations per beat.\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab i.e. in 4/4 time signature, if this value is {\f1 1/4} it will pass the centre at the start of every bar.\sa180\sa180\par}
+}
+]]></description>
+        <link rel="website" href="https://www.bensmithsound.uk">Author</link>
+        <link rel="website" href="https://github.com/bsmith96/Reaper-Scripts">Repository</link>
+      </metadata>
+      <version name="1.0" author="Ben Smith" time="2021-09-27T17:34:10Z">
+        <changelog><![CDATA[+ Translated from EEL, improved documentation]]></changelog>
+        <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/7c55475a3b024c097f6f8b100d516f8532c11678/Miscellaneous/Set%20tempo%20template.lua</source>
+      </version>
+    </reapack>
     <reapack name="VCA Assign Template.lua" type="script" desc="VCA assign template">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
