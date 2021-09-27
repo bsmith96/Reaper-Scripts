@@ -4,9 +4,9 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.0
+  @version 1.1
   @changelog
-    + Translated from EEL, improved documentation
+    + Update documentation, in particular "Usage"
   @about
     # Set tempo template
     Written by Ben Smith - September 2021
@@ -24,6 +24,7 @@
         * baseline value = far left
         * LFO = true
         * Shape = sine
+        * Tempo sync = true
         * Speed = 2
         * Strength = 100
         * Phase = 0.25
@@ -34,6 +35,7 @@
         * baseline value = far left
         * LFO = true
         * Shape = sine
+        * Tempo sync = true
         * Speed = 2
         * Strength = 100
         * Phase = 0.5
