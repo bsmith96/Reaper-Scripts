@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="BSmith96 Scripts" commit="8f96a0940e55519e11ff97497bfe2868a30a24fb">
+<index version="1" name="BSmith96 Scripts" commit="d493e810749031d5d66f2f580b2d5c097a6d782a">
   <category name="Markers">
     <reapack name="Locate to marker.lua" type="script" desc="Locate to marker by OSC">
       <metadata>
@@ -125,16 +125,16 @@
     </reapack>
   </category>
   <category name="Routing">
-    <reapack name="Set channel inputs 1-to-1.lua" type="script" desc="Set channel inputs 1-to-1">
+    <reapack name="Set track inputs 1-to-1.lua" type="script" desc="Set track inputs 1-to-1">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
 \widowctrl\hyphauto
 
-{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Set channel inputs 1-to-1\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Set track inputs 1-to-1\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Written by Ben Smith - July 2021\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Info\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Sets the track input channel sequentially, allowing you to set up projects with high channel counts and quickly route the appropriate inputs to them.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Sets the track input channel sequentially, allowing you to set up projects with high track counts and quickly route the appropriate inputs to them.\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab This is ideal for recording live performances, such as concerts or theatre.\sa180\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Usage\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab All tracks are presumed mono.\par}
@@ -142,68 +142,59 @@
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Stereo tracks MUST start on odd input.\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab If your stereo tracks start with an even input (i.e. even/odd pair) the script will create {\i split stereo} tracks, a mono left and a mono right.\sa180\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 User customisation\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab tracksToUse: all / selected.\par}
-{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Whether to route all tracks or only selected ones.\sa180\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab stereoSuffix: "--2"\par}
 {\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Allows you to customise the naming convention for indicating stereo tracks to the script.\sa180\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab stereoSplitSuffix: [".L", ".R"]\par}
-{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Customise how stereo channels which are split to mono are renamed. e.g. "Left", ".L"\sa180\sa180\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Customise how stereo tracks which are split to mono are renamed. e.g. "Left", ".L"\sa180\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Metapackage\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Set track inputs 1-to-1\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Sets every track input to the track number\sa180\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Set track inputs 1-to-1 for selected tracks\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Only affects selected tracks\sa180\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Set track inputs 1-to-1 ignoring folders\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Assumes folders are used simply for structure, and does not include these.\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab If track 1 is a folder and track 2 is not, track 2 will use input 1.\sa180\sa180\par}
 }
 ]]></description>
         <link rel="website" href="https://www.bensmithsound.uk">Author</link>
         <link rel="website" href="https://github.com/bsmith96/Reaper-Scripts">Repository</link>
       </metadata>
-      <version name="1.1" author="Ben Smith" time="2021-08-08T22:18:06Z">
-        <changelog><![CDATA[+ Can interpret stereo channels
-- Cannot currently handle stereo channels where tracksToUse is "selected"]]></changelog>
-        <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/00cef1e4b944f1562e5e07c146825bad77d18e2e/Routing/Set%20channel%20inputs%201-to-1.lua</source>
-      </version>
-      <version name="1.2" author="Ben Smith" time="2021-08-09T10:29:40Z">
-        <changelog><![CDATA[# Changed stereo track mismatch handling - now creates a pair of mono tracks if a stereo input is not possible.
-# Improved semantics - difference between "track" and "channel" (within tracks) is now more clear.]]></changelog>
-        <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/681ea857f7a8c40d6c0c05013b7444aa6dcbeb06/Routing/Set%20channel%20inputs%201-to-1.lua</source>
-      </version>
-      <version name="1.3" author="Ben Smith" time="2021-08-09T12:30:32Z">
-        <changelog><![CDATA[# Updated commenting to make the script easier to navigate]]></changelog>
-        <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/3a64b41837b2b92c0ea4982a40321d046882e453/Routing/Set%20channel%20inputs%201-to-1.lua</source>
-      </version>
-      <version name="1.4" author="Ben Smith" time="2021-09-04T14:29:48Z">
-        <changelog><![CDATA[# Fixed bug which intepreted any hyphen in track names as a stereo indicator
-# WIP started on further metapackag implementation - commented out]]></changelog>
-        <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/c1e9865236a1d6755254a57a5ce400cdd2222f5e/Routing/Set%20channel%20inputs%201-to-1.lua</source>
-      </version>
-      <version name="1.5" author="Ben Smith" time="2021-09-05T21:06:32Z">
-        <changelog><![CDATA[# Better bug fix for the previous bug, for correct implementation of the stereo suffix]]></changelog>
-        <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/99843e807f248bc26515fc92c5bf979c10525c1a/Routing/Set%20channel%20inputs%201-to-1.lua</source>
+      <version name="2.0" author="Ben Smith" time="2021-09-27T17:00:22Z">
+        <changelog><![CDATA[+ Now a metapackage, allowing easy launching of different versions of the script
+# Renamed package from "set channel inputs 1-to-1" to "set track inputs 1-to-1", for correct semantics.]]></changelog>
+        <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/6fd1a62a692509fec010e258c322663326f3cfe3/Routing/Set%20track%20inputs%201-to-1.lua</source>
+        <source main="main" file="Set track inputs 1-to-1 for selected tracks.lua">https://github.com/bsmith96/Reaper-Scripts/raw/6fd1a62a692509fec010e258c322663326f3cfe3/Routing/Set%20track%20inputs%201-to-1.lua</source>
+        <source main="main" file="Set track inputs 1-to-1 ignoring folders.lua">https://github.com/bsmith96/Reaper-Scripts/raw/6fd1a62a692509fec010e258c322663326f3cfe3/Routing/Set%20track%20inputs%201-to-1.lua</source>
       </version>
     </reapack>
-    <reapack name="Set channel outputs 1-to-1.lua" type="script" desc="Set channel outputs 1-to-1">
+    <reapack name="Set track outputs 1-to-1.lua" type="script" desc="Set track outputs 1-to-1">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
 \widowctrl\hyphauto
 
-{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Set channel outputs 1-to-1\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Set track outputs 1-to-1\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Written by Ben Smith - 2021\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Info\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Routes tracks to the same output as their input, allowing quick routing for Virtual Sound Checks in live situations.\sa180\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 User customisation\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab ignoreFolders = true\par}
-{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab If tracks contain other tracks, the script will ignore these, rather than routing them.\sa180\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab tracksToUse = all / selected\par}
-{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Decides whether the script should target all tracks in the project, or only the selected tracks.\sa180\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Metapackage\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Set track outputs 1-to-1\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Sets the output of every track to be the same as the input routing\sa180\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Set track outputs 1-to-1 for selected tracks\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Sets the output of selected tracks to match input routing\sa180\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Set track outputs 1-to-1 ignoring folders\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Unroutes folders from the main output, but does not route them to a any output. Assumes they are used for structure.\sa180\sa180\par}
 }
 ]]></description>
         <link rel="website" href="https://www.bensmithsound.uk">Author</link>
         <link rel="website" href="https://github.com/bsmith96/Reaper-Scripts">Repository</link>
       </metadata>
-      <version name="1.1" author="Ben Smith" time="2021-08-08T22:18:06Z">
-        <changelog><![CDATA[+ Added the option for routing only selected tracks]]></changelog>
-        <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/00cef1e4b944f1562e5e07c146825bad77d18e2e/Routing/Set%20channel%20outputs%201-to-1.lua</source>
-      </version>
-      <version name="1.2" author="Ben Smith" time="2021-08-09T12:30:32Z">
-        <changelog><![CDATA[# Updated commenting to make the script easier to navigate]]></changelog>
-        <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/3a64b41837b2b92c0ea4982a40321d046882e453/Routing/Set%20channel%20outputs%201-to-1.lua</source>
+      <version name="2.0" author="Ben Smith" time="2021-09-27T17:00:29Z">
+        <changelog><![CDATA[+ Now a metapackage, allowing easy launching of different versions of the script
+# Renamed package from "set channel outputs 1-to-1" to "set track outputs 1-to-1", for correct semantics.]]></changelog>
+        <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/85404d0aca2900ddf516b724e9cb73a5b71e4f5a/Routing/Set%20track%20outputs%201-to-1.lua</source>
+        <source main="main" file="Set track outputs 1-to-1 for selected tracks.lua">https://github.com/bsmith96/Reaper-Scripts/raw/85404d0aca2900ddf516b724e9cb73a5b71e4f5a/Routing/Set%20track%20outputs%201-to-1.lua</source>
+        <source main="main" file="Set track outputs 1-to-1 ignoring folders.lua">https://github.com/bsmith96/Reaper-Scripts/raw/85404d0aca2900ddf516b724e9cb73a5b71e4f5a/Routing/Set%20track%20outputs%201-to-1.lua</source>
       </version>
     </reapack>
     <reapack name="Toggle routing and solo to master.lua" type="script" desc="Toggle routing and solo to master">
