@@ -1,15 +1,16 @@
 --[[
-  @description Set tempo template
+  @description Autopan - Set tempo
   @author Ben Smith
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.5
+  @version 1.6
   @changelog
-    # Added user identifier to provided file names
+    # Bundled a preset library for reasurround
   @metapackage
   @provides
     [main] . > bsmith96_Set tempo.lua
+    FX Presets/Reasurround autopan.RPL
   @about
     # Set tempo template
     Written by Ben Smith - September 2021
@@ -21,6 +22,10 @@
     ### Usage
     * Use ReaSurround as an insert on an "autopanner" track.
       * This track should have its input (ideally mono) fed from a mix on your mixing desk, and should output to each of your 5.1 or 7.1 surround sends.
+    * Bundled with this script is a reasurround preset.
+      * Go to Options > Show REAPER resource path in explorer/finder...
+      * Then go to Scripts > BSmith96 Scripts > Miscellaneous > FX Presets > Reasurround autopan.RPL
+      * Import this as a preset library to the effect (the `+` next to the preset list)
     * Click Param > FX parameter list > Parameter modulation/midi link
       * in 1 X
         * Enable parameter modulation = true
