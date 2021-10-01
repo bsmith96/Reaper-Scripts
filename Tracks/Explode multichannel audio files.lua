@@ -4,9 +4,9 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.2
+  @version 1.3
   @changelog
-    # Always puts new items on the correct tracks regardless of which track is selected
+    # Fix undo block
   @metapackage
   @provides
     [main] . > Explode multichannel audio files into folder.lua
@@ -132,4 +132,4 @@ reaper.Undo_BeginBlock()
 
   reaper.SetMediaItemInfo_Value(selectedItem, "B_MUTE", 1) -- mute the original file
 
-reaper.Undo_EndBlock(scriptName, 0)
+reaper.Undo_EndBlock(scriptName, -1)

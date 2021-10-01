@@ -4,9 +4,9 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.1
+  @version 1.2
   @changelog
-    # Updated commenting to make the script easier to navigate
+    # Fix undo block
   @about
     # Toggle routing and solo to master
     Written by Ben Smith - 2021
@@ -48,4 +48,4 @@ reaper.Undo_BeginBlock()
     end
   end
 
-reaper.Undo_EndBlock("Route tracks to master", 0) -- ##doesn't seem to name the undo item correctly
+reaper.Undo_EndBlock("Route tracks to master", -1)

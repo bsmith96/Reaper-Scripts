@@ -4,10 +4,9 @@
   @link    
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 2.0
+  @version 2.1
   @changelog
-    + Now a metapackage, allowing easy launching of different versions of the script
-    # Renamed package from "set channel outputs 1-to-1" to "set track outputs 1-to-1", for correct semantics.
+    # Fix undo block
   @metapackage
   @provides
     [main] . > Set track outputs 1-to-1.lua
@@ -103,4 +102,4 @@ reaper.Undo_BeginBlock()
     end
   end
 
-reaper.Undo_EndBlock(scriptName, 0)
+reaper.Undo_EndBlock(scriptName, -1)

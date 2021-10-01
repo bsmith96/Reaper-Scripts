@@ -4,9 +4,9 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.3
+  @version 1.4
   @changelog
-    # Rename file provided
+    # Fix undo blocks
   @provides . > bsmith96_Set tempo.lua
   @about
     # Set tempo template
@@ -97,4 +97,4 @@ reaper.Undo_BeginBlock()
   reaper.OnPlayButton() -- trigger the start of the autopanner immediately
   reaper.OnStopButton() -- but don't actually start the playhead running
 
-reaper.Undo_EndBlock(scriptName, 0)
+reaper.Undo_EndBlock(scriptName, -1)

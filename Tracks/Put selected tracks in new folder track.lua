@@ -4,9 +4,9 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.2
+  @version 1.3
   @changelog
-    # Removed user customisation in favour of providing 2 separate scripts - either prompt for name or do not.
+    # Fix undo block
   @metapackage
   @provides
     [main] . > Put selected tracks in new folder track.lua
@@ -90,7 +90,7 @@ reaper.Undo_BeginBlock()
     -- Name folder
     reaper.GetSetMediaTrackInfo_String(newFolder, "P_NAME", folderName_csv, 1)
     
-    reaper.Undo_EndBlock("Put selected tracks in folder \""..folderName_csv.."\"", 0)
+    reaper.Undo_EndBlock("Put selected tracks in folder \""..folderName_csv.."\"", -1)
   else
-    reaper.Undo_EndBlock("Put selected tracks in folder", 0)
+    reaper.Undo_EndBlock("Put selected tracks in folder", -1)
   end

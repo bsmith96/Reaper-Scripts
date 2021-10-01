@@ -4,10 +4,9 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.2
+  @version 1.3
   @changelog
-    + Now metapackage to choose between arm, disarm and toggle arm
-    + Added undo block
+    # Fix undo block
   @metapackage
   @provides
     [main] . > Rec arm all tracks within folders.lua
@@ -58,5 +57,5 @@ do
   end
 end
 
-reaper.Undo_EndBlock(scriptName, 0)
+reaper.Undo_EndBlock(scriptName, -1)
 
