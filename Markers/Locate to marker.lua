@@ -4,9 +4,10 @@
   @link 
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.2
+  @version 1.3
   @changelog
-    # Updated documentation
+    # Rename file provided
+  @provides . > bsmith96_Locate to marker.lua
   @about
     # Locate to marker ID via OSC
     Written by Ben Smith - July 2021

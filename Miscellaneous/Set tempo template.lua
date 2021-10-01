@@ -4,9 +4,10 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.2
+  @version 1.3
   @changelog
-    # The script can now be triggered by OSC, including setting the BPM.
+    # Rename file provided
+  @provides . > bsmith96_Set tempo.lua
   @about
     # Set tempo template
     Written by Ben Smith - September 2021
