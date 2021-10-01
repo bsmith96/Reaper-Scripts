@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="BSmith96 Scripts" commit="eef3147bb7dfb827309df3000ce77d823fe18d79">
+<index version="1" name="BSmith96 Scripts" commit="8e1487a8e25e38d08fc9c62567269d52702fe7f4">
   <category name="Markers">
     <reapack name="Locate to marker.lua" type="script" desc="Locate to marker by OSC">
       <metadata>
@@ -13,11 +13,18 @@
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab The default option for moving the Reaper's playhead to a particular marker only works with the order of markers.\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab This script allows you to specify a marker number (i.e. marker ID) to navigate to.\sa180\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Usage\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Trigger this script via OSC (either a custom command, or /action).\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Trigger this script via OSC. You will need to set a custom trigger.\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Select a custom command to trigger the action.\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Go into the actions list, select the action, and next to the "shortcuts" list, click "add".\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Send the command (this will ignore any value attached).\sa180\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab As an argument in your OSC command, include the marker ID you wish to locate to divided by 1000.\par}
-{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab E.g. for marker 21, send {\f1 /action/XXXXXX 0.021}.\sa180\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab E.g. for marker 21, send {\f1 /reaper/marker_cue 0.021}.\sa180\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab This is because the reaper.get_action_context() command will only return the value of an OSC message if it is between 0 and 1.\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab The resolution of the interpreted value is 16383.\sa180\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab The resolution of the interpreted value is 16383.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab This script is intended to be used in conjuction with Figure 53's {\i QLab} software, and {\field{\*\fldinst{HYPERLINK "https://github.com/bsmith96/Qlab-Scripts/blob/master/Tech%20Rehearsals/Locate%20to%20Reaper%20Marker.applescript"}}{\fldrslt{\ul
+this script
+}}}
+ within Qlab.\sa180\par}
 }
 ]]></description>
         <link rel="website" href="https://www.bensmithsound.uk">Author</link>
@@ -30,6 +37,10 @@
       <version name="1.1" author="Ben Smith" time="2021-08-09T12:30:32Z">
         <changelog><![CDATA[# Updated commenting to make the script easier to navigate]]></changelog>
         <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/3a64b41837b2b92c0ea4982a40321d046882e453/Markers/Locate%20to%20marker.lua</source>
+      </version>
+      <version name="1.2" author="Ben Smith" time="2021-10-01T14:46:12Z">
+        <changelog><![CDATA[# Updated documentation]]></changelog>
+        <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/a4877ef322519e8e70cf65f8eb5b8257213e5ee1/Markers/Locate%20to%20marker.lua</source>
       </version>
     </reapack>
   </category>
@@ -73,7 +84,8 @@
 {\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Phase reset = on seek/loop\sa180\sa180\sa180\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 User customisation\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab userBPM\par}
-{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab The user's tempo of choice\sa180\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab The user's tempo of choice\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab If you trigger the script with a custom OSC command, and send a number after it between 0 and 1, this value will be multiplied by 1000 and used as the BPM value.\sa180\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab rotationsPerBeat\par}
 {\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab How many rotations per beat.\par}
 {\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab i.e. in 4/4 time signature, if this value is {\f1 1/4} it will pass the centre at the start of every bar.\sa180\sa180\par}
@@ -89,6 +101,10 @@
       <version name="1.1" author="Ben Smith" time="2021-09-27T17:40:21Z">
         <changelog><![CDATA[+ Update documentation, in particular "Usage"]]></changelog>
         <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/eef3147bb7dfb827309df3000ce77d823fe18d79/Miscellaneous/Set%20tempo%20template.lua</source>
+      </version>
+      <version name="1.2" author="Ben Smith" time="2021-10-01T14:46:28Z">
+        <changelog><![CDATA[# The script can now be triggered by OSC, including setting the BPM.]]></changelog>
+        <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/8e1487a8e25e38d08fc9c62567269d52702fe7f4/Miscellaneous/Set%20tempo%20template.lua</source>
       </version>
     </reapack>
     <reapack name="VCA Assign Template.lua" type="script" desc="VCA assign template">
