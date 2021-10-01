@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="BSmith96 Scripts" commit="8e1487a8e25e38d08fc9c62567269d52702fe7f4">
+<index version="1" name="BSmith96 Scripts" commit="79756306aecc585403f7c35bb3ed25c6725cfe62">
   <category name="Markers">
     <reapack name="Locate to marker.lua" type="script" desc="Locate to marker by OSC">
       <metadata>
@@ -41,6 +41,10 @@ this script
       <version name="1.2" author="Ben Smith" time="2021-10-01T14:46:12Z">
         <changelog><![CDATA[# Updated documentation]]></changelog>
         <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/a4877ef322519e8e70cf65f8eb5b8257213e5ee1/Markers/Locate%20to%20marker.lua</source>
+      </version>
+      <version name="1.3" author="Ben Smith" time="2021-10-01T15:01:46Z">
+        <changelog><![CDATA[# Rename file provided]]></changelog>
+        <source main="main" file="bsmith96_Locate to marker.lua">https://github.com/bsmith96/Reaper-Scripts/raw/79756306aecc585403f7c35bb3ed25c6725cfe62/Markers/Locate%20to%20marker.lua</source>
       </version>
     </reapack>
   </category>
@@ -105,6 +109,10 @@ this script
       <version name="1.2" author="Ben Smith" time="2021-10-01T14:46:28Z">
         <changelog><![CDATA[# The script can now be triggered by OSC, including setting the BPM.]]></changelog>
         <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/8e1487a8e25e38d08fc9c62567269d52702fe7f4/Miscellaneous/Set%20tempo%20template.lua</source>
+      </version>
+      <version name="1.3" author="Ben Smith" time="2021-10-01T15:01:46Z">
+        <changelog><![CDATA[# Rename file provided]]></changelog>
+        <source main="main" file="bsmith96_Set tempo.lua">https://github.com/bsmith96/Reaper-Scripts/raw/79756306aecc585403f7c35bb3ed25c6725cfe62/Miscellaneous/Set%20tempo%20template.lua</source>
       </version>
     </reapack>
     <reapack name="VCA Assign Template.lua" type="script" desc="VCA assign template">
