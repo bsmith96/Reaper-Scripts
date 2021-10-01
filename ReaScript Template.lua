@@ -7,6 +7,7 @@
   @version 1.0
   @changelog
     + Initial version
+  @provides . > bsmith96_{filename.lua}
   @about
     # {Package name}
     Written by Ben Smith - {Month Year}
