@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="BSmith96 Scripts" commit="d53869a1d54aed09e1d5e899fea76263279b7388">
+<index version="1" name="BSmith96 Scripts" commit="b8e5d7808a8b541ebc574e3653b94b094c8eafa8">
   <category name="Markers">
     <reapack name="Locate to marker.lua" type="script" desc="Locate to marker by OSC">
       <metadata>
@@ -53,7 +53,7 @@ this script
     </reapack>
   </category>
   <category name="Miscellaneous">
-    <reapack name="Set tempo template.lua" type="script" desc="Set tempo template">
+    <reapack name="Autopan - Set tempo.lua" type="script" desc="Autopan - Set tempo">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
@@ -67,6 +67,10 @@ this script
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Usage\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Use ReaSurround as an insert on an "autopanner" track.\par}
 {\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab This track should have its input (ideally mono) fed from a mix on your mixing desk, and should output to each of your 5.1 or 7.1 surround sends.\sa180\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Bundled with this script is a reasurround preset.\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Go to Options > Show REAPER resource path in explorer/finder...\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Then go to Scripts > BSmith96 Scripts > Miscellaneous > FX Presets > Reasurround autopan.RPL\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Import this as a preset library to the effect (the {\f1 +} next to the preset list)\sa180\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Click Param > FX parameter list > Parameter modulation/midi link\par}
 {\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab in 1 X\par}
 {\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Enable parameter modulation = true\par}
@@ -102,29 +106,10 @@ this script
         <link rel="website" href="https://www.bensmithsound.uk">Author</link>
         <link rel="website" href="https://github.com/bsmith96/Reaper-Scripts">Repository</link>
       </metadata>
-      <version name="1.0" author="Ben Smith" time="2021-09-27T17:34:10Z">
-        <changelog><![CDATA[+ Translated from EEL, improved documentation]]></changelog>
-        <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/7c55475a3b024c097f6f8b100d516f8532c11678/Miscellaneous/Set%20tempo%20template.lua</source>
-      </version>
-      <version name="1.1" author="Ben Smith" time="2021-09-27T17:40:21Z">
-        <changelog><![CDATA[+ Update documentation, in particular "Usage"]]></changelog>
-        <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/eef3147bb7dfb827309df3000ce77d823fe18d79/Miscellaneous/Set%20tempo%20template.lua</source>
-      </version>
-      <version name="1.2" author="Ben Smith" time="2021-10-01T14:46:28Z">
-        <changelog><![CDATA[# The script can now be triggered by OSC, including setting the BPM.]]></changelog>
-        <source main="main">https://github.com/bsmith96/Reaper-Scripts/raw/8e1487a8e25e38d08fc9c62567269d52702fe7f4/Miscellaneous/Set%20tempo%20template.lua</source>
-      </version>
-      <version name="1.3" author="Ben Smith" time="2021-10-01T15:01:46Z">
-        <changelog><![CDATA[# Rename file provided]]></changelog>
-        <source main="main" file="bsmith96_Set tempo.lua">https://github.com/bsmith96/Reaper-Scripts/raw/79756306aecc585403f7c35bb3ed25c6725cfe62/Miscellaneous/Set%20tempo%20template.lua</source>
-      </version>
-      <version name="1.4" author="Ben Smith" time="2021-10-01T16:41:24Z">
-        <changelog><![CDATA[# Fix undo blocks]]></changelog>
-        <source main="main" file="bsmith96_Set tempo.lua">https://github.com/bsmith96/Reaper-Scripts/raw/79898638a491825e90c7a8bda79021fd2345d3a1/Miscellaneous/Set%20tempo%20template.lua</source>
-      </version>
-      <version name="1.5" author="Ben Smith" time="2021-10-01T16:53:44Z">
-        <changelog><![CDATA[# Added user identifier to provided file names]]></changelog>
-        <source main="main" file="bsmith96_Set tempo.lua">https://github.com/bsmith96/Reaper-Scripts/raw/d53869a1d54aed09e1d5e899fea76263279b7388/Miscellaneous/Set%20tempo%20template.lua</source>
+      <version name="1.6" author="Ben Smith" time="2021-10-01T17:27:13Z">
+        <changelog><![CDATA[# Bundled a preset library for reasurround]]></changelog>
+        <source main="main" file="bsmith96_Set tempo.lua">https://github.com/bsmith96/Reaper-Scripts/raw/b8e5d7808a8b541ebc574e3653b94b094c8eafa8/Miscellaneous/Autopan%20-%20Set%20tempo.lua</source>
+        <source file="FX Presets/Reasurround autopan.RPL">https://github.com/bsmith96/Reaper-Scripts/raw/b8e5d7808a8b541ebc574e3653b94b094c8eafa8/Miscellaneous/FX%20Presets/Reasurround%20autopan.RPL</source>
       </version>
     </reapack>
     <reapack name="VCA Assign Template.lua" type="script" desc="VCA assign template">
