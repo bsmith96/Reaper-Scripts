@@ -4,9 +4,9 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.1
+  @version 1.2
   @changelog
-    + Update documentation, in particular "Usage"
+    # The script can now be triggered by OSC, including setting the BPM.
   @about
     # Set tempo template
     Written by Ben Smith - September 2021
@@ -45,6 +45,7 @@
     ### User customisation
     * userBPM
       * The user's tempo of choice
+      * If you trigger the script with a custom OSC command, and send a number after it between 0 and 1, this value will be multiplied by 1000 and used as the BPM value.
     * rotationsPerBeat
       * How many rotations per beat.
       * i.e. in 4/4 time signature, if this value is `1/4` it will pass the centre at the start of every bar.
@@ -77,7 +78,20 @@ local scriptDirectory = ({reaper.get_action_context()})[2]:sub(1, ({reaper.get_a
 
 reaper.Undo_BeginBlock()
 
-  reaper.SetCurrentBPM(__proj, userBPM * rotationsPerBeat, true) -- set BPM
+  -- Get the value of the OSC command which triggered this script
+  is_new_value,filename,sectionID,cmdID,mode,resolution,val = reaper.get_action_context()
+
+  -- Convert the received value back to an integer
+  newTempo = val/16.383
+
+  -- If the conversions were not exact, round the result to the nearest integer
+  newTempo = math.floor(newTempo+0.5)
+
+  if val == 0 then
+    reaper.SetCurrentBPM(__proj, userBPM * rotationsPerBeat, true) -- set BPM to user variable
+  else
+    reaper.SetCurrentBPM(__proj, newTempo * rotationsPerBeat, true) -- set BPM to 1000 * OSC value
+  end
 
   reaper.OnPlayButton() -- trigger the start of the autopanner immediately
   reaper.OnStopButton() -- but don't actually start the playhead running
