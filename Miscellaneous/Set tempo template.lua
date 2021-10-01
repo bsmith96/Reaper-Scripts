@@ -4,10 +4,12 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.4
+  @version 1.5
   @changelog
-    # Fix undo blocks
-  @provides . > bsmith96_Set tempo.lua
+    # Added user identifier to provided file names
+  @metapackage
+  @provides
+    [main] . > bsmith96_Set tempo.lua
   @about
     # Set tempo template
     Written by Ben Smith - September 2021

@@ -4,14 +4,14 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.3
+  @version 1.4
   @changelog
-    # Fix undo block
+    # Added user identifier to provided file names
   @metapackage
   @provides
-    [main] . > Explode multichannel audio files into folder.lua
-    [main] . > Explode multichannel audio files into new tracks.lua
-    [main] . > Explode multichannel audio files into existing tracks.lua
+    [main] . > bsmith96_Explode multichannel audio files into folder.lua
+    [main] . > bsmith96_Explode multichannel audio files into new tracks.lua
+    [main] . > bsmith96_Explode multichannel audio files into existing tracks.lua
   @about
     # Explode multichannel audio files non-destructively
     Written by Ben Smith - August 2021

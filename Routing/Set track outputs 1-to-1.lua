@@ -4,14 +4,14 @@
   @link    
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 2.1
+  @version 2.2
   @changelog
-    # Fix undo block
+    # Added user identifier to provided file names
   @metapackage
   @provides
-    [main] . > Set track outputs 1-to-1.lua
-    [main] . > Set track outputs 1-to-1 for selected tracks.lua
-    [main] . > Set track outputs 1-to-1 ignoring folders.lua
+    [main] . > bsmith96_Set track outputs 1-to-1.lua
+    [main] . > bsmith96_Set track outputs 1-to-1 for selected tracks.lua
+    [main] . > bsmith96_Set track outputs 1-to-1 ignoring folders.lua
   @about
     # Set track outputs 1-to-1
     Written by Ben Smith - 2021

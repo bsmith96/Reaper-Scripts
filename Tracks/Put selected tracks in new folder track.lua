@@ -4,13 +4,13 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.3
+  @version 1.4
   @changelog
-    # Fix undo block
+    # Added user identifier to provided file names
   @metapackage
   @provides
-    [main] . > Put selected tracks in new folder track.lua
-    [main] . > Put selected tracks in new folder track and ask for name.lua
+    [main] . > bsmith96_Put selected tracks in new folder track.lua
+    [main] . > bsmith96_Put selected tracks in new folder track and ask for name.lua
   @about
     # Put selected tracks in a new folder
     Written by Ben Smith - 2021

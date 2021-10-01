@@ -4,9 +4,12 @@
 	@link
 		Author     https://www.bensmithsound.uk
 		Repository https://github.com/bsmith96/Reaper-Scripts
-	@version 1.2
+	@version 1.3
 	@changelog
-		# Updated commenting to make the script easier to navigate
+		# Added user identifier to provided file names
+	@metapackage
+	@provides
+	  [main] . > bsmith96_Arm Tracks For Recording.lua
 	@about
 		# Arm tracks for recording
 		Written by Ben Smith - 2021

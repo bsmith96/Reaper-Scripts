@@ -4,10 +4,12 @@
   @link 
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.3
+  @version 1.4
   @changelog
-    # Rename file provided
-  @provides . > bsmith96_Locate to marker.lua
+    # Added user identifier to provided file names
+  @metapackage
+  @provides
+    [main] . > bsmith96_Locate to marker.lua
   @about
     # Locate to marker ID via OSC
     Written by Ben Smith - July 2021

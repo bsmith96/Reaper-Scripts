@@ -4,9 +4,12 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.2
+  @version 1.3
   @changelog
-    # Fix undo block
+    # Added user identifier to provided file names
+  @metapackage
+  @provides
+    [main] . > bsmith96_Toggle routing and solo to master.lua
   @about
     # Toggle routing and solo to master
     Written by Ben Smith - 2021

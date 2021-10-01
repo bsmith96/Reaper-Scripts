@@ -4,14 +4,14 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.3
+  @version 1.4
   @changelog
-    # Fix undo block
+    # Added user identifier to provided file names
   @metapackage
   @provides
-    [main] . > Rec arm all tracks within folders.lua
-    [main] . > Rec disarm tracks within folders.lua
-    [main] . > Rec toggle tracks within folders.lua  
+    [main] . > bsmith96_Rec arm all tracks within folders.lua
+    [main] . > bsmith96_Rec disarm tracks within folders.lua
+    [main] . > bsmith96_Rec toggle tracks within folders.lua  
   @about
     # Arm all tracks within folders
     Written by Ben Smith - 2021
