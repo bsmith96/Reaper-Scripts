@@ -7,7 +7,9 @@
   @version 1.0
   @changelog
     + Initial version
-  @provides . > bsmith96_{filename.lua}
+  @metapackage
+  @provides
+    [main] . > bsmith96_{filename}.lua
   @about
     # {Package name}
     Written by Ben Smith - {Month Year}
@@ -30,26 +32,41 @@
 --------- End of user customisation area --
 
 
--- ===========================================
--- ===============  FUNCTIONS  ===============
--- ===========================================
-
-
--- =================================================
--- ===============  GLOBAL VARIABLES ===============
--- =================================================
+-- =========================================================
+-- =================  GLOBAL VARIABLES  ====================
+-- =========================================================
 
 -- get the script's name and directory
 local scriptName = ({reaper.get_action_context()})[2]:match("([^/\\_]+)%.lua$")
 local scriptDirectory = ({reaper.get_action_context()})[2]:sub(1, ({reaper.get_action_context()})[2]:find("\\[^\\]*$"))
 
 
--- ==============================================
--- ===============  MAIN ROUTINE  ===============
--- ==============================================
+-- =========================================================
+-- ======================  FUNCTIONS  ======================
+-- =========================================================
+
+
+-- =========================================================
+-- ======================  UTILITIES  ======================
+-- =========================================================
+
+-- deliver messages and add new line in console
+function dbg(dbg)
+  reaper.ShowConsoleMsg(dbg .. "\n")
+end
+
+-- deliver messages using message box
+function msg(msg)
+  reaper.MB(msg, scriptName, 0)
+end
+
+
+-- =========================================================
+-- ===================  MAIN ROUTINE  ======================
+-- =========================================================
 
 reaper.Undo_BeginBlock()
 
 
 
-reaper.Undo_EndBlock(scriptName, 0)
+reaper.Undo_EndBlock(scriptName, -1)
