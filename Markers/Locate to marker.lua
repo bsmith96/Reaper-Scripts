@@ -4,9 +4,9 @@
   @link 
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.1
+  @version 1.2
   @changelog
-    # Updated commenting to make the script easier to navigate
+    # Updated documentation
   @about
     # Locate to marker ID via OSC
     Written by Ben Smith - July 2021
@@ -16,11 +16,15 @@
     * This script allows you to specify a marker number (i.e. marker ID) to navigate to.
 
     ### Usage
-    * Trigger this script via OSC (either a custom command, or /action).
+    * Trigger this script via OSC. You will need to set a custom trigger.
+      * Select a custom command to trigger the action. 
+      * Go into the actions list, select the action, and next to the "shortcuts" list, click "add".
+      * Send the command (this will ignore any value attached).
     * As an argument in your OSC command, include the marker ID you wish to locate to divided by 1000.
-      * E.g. for marker 21, send `/action/XXXXXX 0.021`.
+      * E.g. for marker 21, send `/reaper/marker_cue 0.021`.
     * This is because the reaper.get_action_context() command will only return the value of an OSC message if it is between 0 and 1.
     * The resolution of the interpreted value is 16383.
+    * This script is intended to be used in conjuction with Figure 53's *QLab* software, and [this script](https://github.com/bsmith96/Qlab-Scripts/blob/master/Tech%20Rehearsals/Locate%20to%20Reaper%20Marker.applescript) within Qlab.
 ]]
 
 
