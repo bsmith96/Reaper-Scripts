@@ -4,7 +4,7 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.0-beta1
+  @version 1.0
   @changelog
     + Initial version
   @metapackage
@@ -18,7 +18,7 @@
 
     ### Info
     * If the selected tracks is a folder and contains other tracks, this script will arm those tracks
-    * If any tracks within the selected track are also folders, the script will not record arm them
+    * FUTURE FEATURE: If any tracks within the selected track are also folders, the script will not record arm them
 
     ### Usage
     * Run this script (e.g. by keyboard shortcut) when a folder is selected.
