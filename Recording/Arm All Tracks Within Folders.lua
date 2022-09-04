@@ -4,9 +4,9 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.4
+  @version 1.5-beta1
   @changelog
-    # Added user identifier to provided file names
+    # If installed directly rather than via Reapack, toggles are state of tracks
   @metapackage
   @provides
     [main] . > bsmith96_Rec arm all tracks within folders.lua
@@ -51,8 +51,10 @@ do
       reaper.CSurf_OnRecArmChange(track, -1)
     elseif scriptName:find("disarm") then
       reaper.CSurf_OnRecArmChange(track, 0)
-    elseif scriptName:find("arm") then
+    elseif scriptName:find("Rec arm") then
       reaper.CSurf_OnRecArmChange(track, 1)
+    else
+      reaper.CSurf_OnRecArmChange(track, -1)
     end
   end
 end
