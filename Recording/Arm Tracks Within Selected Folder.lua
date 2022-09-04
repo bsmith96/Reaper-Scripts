@@ -4,7 +4,7 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 2.0-beta1
+  @version 2.0
   @changelog
     # Improved functionality for different selections.
     + If no track is selected, arms all tracks within folders
