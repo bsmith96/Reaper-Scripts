@@ -4,9 +4,13 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.0
+  @version 2.0-beta1
   @changelog
-    + Initial version
+    # Improved functionality for different selections.
+    + If no track is selected, arms all tracks within folders
+    + If a child is selected, arms all peers
+    + If a top level track is selected, arms all tracks within folders
+    # If installed directly rather than via Reapack, toggles arm state of tracks
   @metapackage
   @provides
     [main] . > bsmith96_Rec arm tracks within selected folder.lua
@@ -14,14 +18,15 @@
     [main] . > bsmith96_Rec toggle tracks within selected folder.lua
   @about
     # Arm Tracks Within Selected Folder
-    Written by Ben Smith - November 2021
+    Written by Ben Smith - November 2021 - Updated September 2022
 
     ### Info
-    * If the selected tracks is a folder and contains other tracks, this script will arm those tracks
-    * FUTURE FEATURE: If any tracks within the selected track are also folders, the script will not record arm them
+    * Run this script with a folder track selected to arm all tracks within that folder, which are not folders themselves.
+    * Run this script with a child track selected to arm all peers within the parent folder.
+    * Run this script with a top level track, or no track, selected to arm all tracks within folders.
 
     ### Usage
-    * Run this script (e.g. by keyboard shortcut) when a folder is selected.
+    * Run this script (e.g. by keyboard shortcut) when a folder track is selected, a child track is selected, or without any tracks selected, as a shortcut to arming different sections of a template.
     * This could be useful for e.g. recording only a band, and ignoring vocal mics.
 ]]
 
@@ -42,6 +47,23 @@ local scriptDirectory = ({reaper.get_action_context()})[2]:sub(1, ({reaper.get_a
 function getDepth(track)
   track = reaper.GetTrack(0, trackID-1)
   trackDepth = reaper.GetMediaTrackInfo_Value(track, "I_FOLDERDEPTH")
+  return trackDepth
+end
+
+function toggleArm(j)
+  track = reaper.GetTrack(0, j-1)
+  trackDepth = reaper.GetMediaTrackInfo_Value(track, "I_FOLDERDEPTH")
+  if trackDepth <= 0.0 then
+    if scriptName:find("toggle") then
+      reaper.CSurf_OnRecArmChange(track, -1)
+    elseif scriptName:find("disarm") then
+      reaper.CSurf_OnRecArmChange(track, 0)
+    elseif scriptName:find("Rec arm") then
+      reaper.CSurf_OnRecArmChange(track, 1)
+    else
+      reaper.CSurf_OnRecArmChange(track, -1)
+    end
+  end
   return trackDepth
 end
 
@@ -68,34 +90,38 @@ end
 reaper.Undo_BeginBlock()
 
 -- Count tracks in project
-
 trackCount = reaper.CountTracks(0)
 
 -- Get selected track
 selectedTrack = reaper.GetSelectedTrack2(0, 0, false)
 
--- Get track ID
-trackID = reaper.CSurf_TrackToID(selectedTrack, false)
-
-totalDepth = 1
-
-for i = trackID+1, trackCount, 1
-do
-  track = reaper.GetTrack(0, i-1)
-  trackDepth = reaper.GetMediaTrackInfo_Value(track, "I_FOLDERDEPTH")
-  if trackDepth <= 0.0 then
-    if scriptName:find("toggle") then
-      reaper.CSurf_OnRecArmChange(track, -1)
-    elseif scriptName:find("disarm") then
-      reaper.CSurf_OnRecArmChange(track, 0)
-    elseif scriptName:find("arm") then
-      reaper.CSurf_OnRecArmChange(track, 1)
-    end
+-- Check if selected track is a folder
+if selectedTrack ~= nil then
+  selectedTrackDepth = reaper.GetMediaTrackInfo_Value(selectedTrack, "I_FOLDERDEPTH")
+  if selectedTrackDepth <=0 then
+    selectedTrack = reaper.GetParentTrack(selectedTrack) -- if available, use the parent track as the folder. If there is no parent (i.e. top level), it will be set to "nil" and the script will run as if no track is selected.
   end
-  totalDepth = totalDepth + trackDepth
-  -- dbg(totalDepth)
-  if totalDepth == 0 then
-    return
+end
+
+if selectedTrack == nil then -- arm all tracks within folders
+  for i = trackCount, 1, -1
+  do
+    toggleArm(i)
+  end
+else -- arm tracks wtihin the selected or parent folder, including all tracks wtihin folders if there is no parent
+  -- Get track ID
+  trackID = reaper.CSurf_TrackToID(selectedTrack, false)
+
+  -- Set initial variable value
+  totalDepth = 1
+
+  for i = trackID+1, trackCount, 1
+  do
+    toggleArm(i)
+    totalDepth = totalDepth + trackDepth
+    if totalDepth == 0 then
+      return
+    end
   end
 end
 
