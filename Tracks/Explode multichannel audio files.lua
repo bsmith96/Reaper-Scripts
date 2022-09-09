@@ -4,9 +4,10 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.6-beta2
+  @version 1.6
   @changelog
-    # fixed bug in grouping items
+    # Groups media items together so they remain in time with each other
+    # Adds the option of keeping routing when exploding into a folder
   @metapackage
   @provides
     [main] . > bsmith96_Explode multichannel audio files into folder.lua
