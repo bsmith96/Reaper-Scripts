@@ -4,10 +4,9 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.6-beta1
+  @version 1.6-beta2
   @changelog
-    # Groups media items together so they remain in time with eachother
-    # Adds the option of keeping routing when exploding into a folder
+    # fixed bug in grouping items
   @metapackage
   @provides
     [main] . > bsmith96_Explode multichannel audio files into folder.lua
@@ -120,7 +119,7 @@ reaper.Undo_BeginBlock()
 
       -- set item channel
       reaper.SetMediaItemTakeInfo_Value( reaper.GetActiveTake( newItem ) , "I_CHANMODE", 3 + i) -- set track of file for each item
-      reaper.SetMediaItemInfo_Value(newItem, "I_GROUPID", groupID+i) -- add item to group
+      reaper.SetMediaItemInfo_Value(newItem, "I_GROUPID", groupID) -- add item to group
 
       -- name track
       nameTrack(selectedTrack, newTrack, i)
@@ -149,7 +148,7 @@ reaper.Undo_BeginBlock()
 
       -- Set item channel
       reaper.SetMediaItemTakeInfo_Value( reaper.GetActiveTake( newItem ) , "I_CHANMODE", 3 + i) -- set track of file for each item
-      reaper.SetMediaItemInfo_Value(newItem, "I_GROUPID", groupID+i) -- add item to group
+      reaper.SetMediaItemInfo_Value(newItem, "I_GROUPID", groupID) -- add item to group
 
       -- name track
       nameTrack(selectedTrack, newTrack, i)
