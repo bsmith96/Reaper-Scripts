@@ -4,12 +4,14 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.5
+  @version 1.6-beta1
   @changelog
-    # If installed directly rather than via reapack, explodes into new tracks by default
+    # Groups media items together so they remain in time with eachother
+    # Adds the option of keeping routing when exploding into a folder
   @metapackage
   @provides
     [main] . > bsmith96_Explode multichannel audio files into folder.lua
+    [main] . > bsmith96_Explode multichannel audio files into folder keeping routing.lua
     [main] . > bsmith96_Explode multichannel audio files into new tracks.lua
     [main] . > bsmith96_Explode multichannel audio files into existing tracks.lua
   @about
@@ -62,14 +64,36 @@ local scriptName = ({reaper.get_action_context()})[2]:match("([^/\\_]+)%.lua$")
 local scriptDirectory = ({reaper.get_action_context()})[2]:sub(1, ({reaper.get_action_context()})[2]:find("\\[^\\]*$"))
 
 
+-- =========================================================
+-- ======================  UTILITIES  ======================
+-- =========================================================
+
+-- deliver messages and add new line in console
+function dbg(dbg)
+  reaper.ShowConsoleMsg(dbg .. "\n")
+end
+
+-- deliver messages using message box
+function msg(msg)
+  reaper.MB(msg, scriptName, 0)
+end
+
+
 -- ==============================================
 -- ===============  MAIN ROUTINE  ===============
 -- ==============================================
 
 reaper.Undo_BeginBlock()
 
+  -- generate a random number for group ID for this explosion
+  math.randomseed(os.time())
+  groupID = math.random(1, 5000)
+
   -- get selected media item
   selectedItem = reaper.GetSelectedMediaItem(0, 0)
+
+  -- add original item to group
+  reaper.SetMediaItemInfo_Value(selectedItem, "I_GROUPID", groupID)
 
   -- get selected track
   selectedTrack = reaper.GetMediaItem_Track(selectedItem)
@@ -95,7 +119,8 @@ reaper.Undo_BeginBlock()
       local newItem = copyPasteItem(selectedTrack, selectedItem, newTrack)
 
       -- set item channel
-      reaper.SetMediaItemTakeInfo_Value( reaper.GetActiveTake( newItem ) , "I_CHANMODE", 3 + i)
+      reaper.SetMediaItemTakeInfo_Value( reaper.GetActiveTake( newItem ) , "I_CHANMODE", 3 + i) -- set track of file for each item
+      reaper.SetMediaItemInfo_Value(newItem, "I_GROUPID", groupID+i) -- add item to group
 
       -- name track
       nameTrack(selectedTrack, newTrack, i)
@@ -104,7 +129,8 @@ reaper.Undo_BeginBlock()
       local newItem = copyPasteItem(selectedTrack, selectedItem, reaper.CSurf_TrackFromID(selectedTrackID + 1 + i, false))
 
       -- set item channel
-      reaper.SetMediaItemTakeInfo_Value( reaper.GetActiveTake( newItem ) , "I_CHANMODE", 3 + i)
+      reaper.SetMediaItemTakeInfo_Value( reaper.GetActiveTake( newItem ) , "I_CHANMODE", 3 + i) -- set track of file for each item
+      reaper.SetMediaItemInfo_Value(newItem, "I_GROUPID", groupID) -- add item to group
     elseif scriptName:find("into folder") then
       -- insert new track
       reaper.InsertTrackAtIndex( selectedTrackID + i, true )
@@ -122,12 +148,18 @@ reaper.Undo_BeginBlock()
       local newItem = copyPasteItem(selectedTrack, selectedItem, newTrack)
 
       -- Set item channel
-      reaper.SetMediaItemTakeInfo_Value( reaper.GetActiveTake( newItem ) , "I_CHANMODE", 3 + i)
+      reaper.SetMediaItemTakeInfo_Value( reaper.GetActiveTake( newItem ) , "I_CHANMODE", 3 + i) -- set track of file for each item
+      reaper.SetMediaItemInfo_Value(newItem, "I_GROUPID", groupID+i) -- add item to group
 
       -- name track
       nameTrack(selectedTrack, newTrack, i)
-    end  
 
+      -- if selected, keep routing on new tracks
+      if scriptName:find("keeping routing") then
+        reaper.SetMediaTrackInfo_Value(newTrack, "C_MAINSEND_NCH", 1) -- only send a mono channel
+        reaper.SetMediaTrackInfo_Value(newTrack, "C_MAINSEND_OFFS", i) -- offset to be the correct channel
+      end
+    end
   end
 
   reaper.SetMediaItemInfo_Value(selectedItem, "B_MUTE", 1) -- mute the original file
