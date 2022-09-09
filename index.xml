@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="BSmith96 Scripts" commit="c39b5d17edb2f87461b1020d5620ec67aea7aa16">
+<index version="1" name="BSmith96 Scripts" commit="1c845251ff693464b0c58135c436133a3d80c55d">
   <category name="Markers">
     <reapack name="Locate to marker.lua" type="script" desc="Locate to marker by OSC">
       <metadata>
@@ -479,6 +479,12 @@ this script
         <source main="main" file="bsmith96_Explode multichannel audio files into folder.lua">https://github.com/bsmith96/Reaper-Scripts/raw/d53869a1d54aed09e1d5e899fea76263279b7388/Tracks/Explode%20multichannel%20audio%20files.lua</source>
         <source main="main" file="bsmith96_Explode multichannel audio files into new tracks.lua">https://github.com/bsmith96/Reaper-Scripts/raw/d53869a1d54aed09e1d5e899fea76263279b7388/Tracks/Explode%20multichannel%20audio%20files.lua</source>
         <source main="main" file="bsmith96_Explode multichannel audio files into existing tracks.lua">https://github.com/bsmith96/Reaper-Scripts/raw/d53869a1d54aed09e1d5e899fea76263279b7388/Tracks/Explode%20multichannel%20audio%20files.lua</source>
+      </version>
+      <version name="1.5-beta1" author="Ben Smith" time="2022-09-09T11:47:26Z">
+        <changelog><![CDATA[# If installed directly rather than via reapack, explodes into new tracks by default]]></changelog>
+        <source main="main" file="bsmith96_Explode multichannel audio files into folder.lua">https://github.com/bsmith96/Reaper-Scripts/raw/1c845251ff693464b0c58135c436133a3d80c55d/Tracks/Explode%20multichannel%20audio%20files.lua</source>
+        <source main="main" file="bsmith96_Explode multichannel audio files into new tracks.lua">https://github.com/bsmith96/Reaper-Scripts/raw/1c845251ff693464b0c58135c436133a3d80c55d/Tracks/Explode%20multichannel%20audio%20files.lua</source>
+        <source main="main" file="bsmith96_Explode multichannel audio files into existing tracks.lua">https://github.com/bsmith96/Reaper-Scripts/raw/1c845251ff693464b0c58135c436133a3d80c55d/Tracks/Explode%20multichannel%20audio%20files.lua</source>
       </version>
     </reapack>
     <reapack name="Put selected tracks in new folder track.lua" type="script" desc="Put selected tracks in a new folder">
