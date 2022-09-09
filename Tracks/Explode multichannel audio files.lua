@@ -4,7 +4,7 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.5-beta1
+  @version 1.5
   @changelog
     # If installed directly rather than via reapack, explodes into new tracks by default
   @metapackage
