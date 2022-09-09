@@ -4,9 +4,9 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.4
+  @version 1.5-beta1
   @changelog
-    # Added user identifier to provided file names
+    # If installed directly rather than via reapack, explodes into new tracks by default
   @metapackage
   @provides
     [main] . > bsmith96_Explode multichannel audio files into folder.lua
@@ -86,7 +86,7 @@ reaper.Undo_BeginBlock()
 
 
   for i=0, channelCount - 1 do
-    if scriptName:find("into new tracks") then
+    if (scriptName:find("into new tracks") or not(scriptName:find("into"))) then
       -- insert new track
       reaper.InsertTrackAtIndex( selectedTrackID + i, true )
       local newTrack = reaper.GetTrack( 0, selectedTrackID + i )
