@@ -26,29 +26,31 @@
 -- ===============  GLOBAL VARIABLES  ===============
 -- ==================================================
 
+local r = reaper
+
 -- get the script's name and directory
-local scriptName = ({reaper.get_action_context()})[2]:match("([^/\\_]+)%.lua$")
-local scriptDirectory = ({reaper.get_action_context()})[2]:sub(1, ({reaper.get_action_context()})[2]:find("\\[^\\]*$"))
+local scriptName = ({r.get_action_context()})[2]:match("([^/\\_]+)%.lua$")
+local scriptDirectory = ({r.get_action_context()})[2]:sub(1, ({r.get_action_context()})[2]:find("\\[^\\]*$"))
 
 
 -- ==============================================
 -- ===============  MAIN ROUTINE  ===============
 -- ==============================================
 
-reaper.Undo_BeginBlock()
+r.Undo_BeginBlock()
 
   ---- Get the required information about the tracks
 
   -- Count selected tracks (relative to 0)
-  selectedTrackCount = reaper.CountSelectedTracks(0)-1
+  selectedTrackCount = r.CountSelectedTracks(0)-1
   
   -- Create table for all selected tracks
   tracks = {}
 
   -- Get user data of selected tracks
   for i = 0, selectedTrackCount do
-    track = reaper.GetSelectedTrack2(0, i,false)
-    table.insert(tracks, reaper.CSurf_TrackToID(track, false))
+    track = r.GetSelectedTrack2(0, i,false)
+    table.insert(tracks, r.CSurf_TrackToID(track, false))
   end
 
   -- Compute positions of required tracks
@@ -60,21 +62,21 @@ reaper.Undo_BeginBlock()
   ---- Create the folder and indent the selection
 
   -- Insert track before the selected tracks (the folder)
-  reaper.InsertTrackAtIndex(insertPoint, true)
+  r.InsertTrackAtIndex(insertPoint, true)
 
   -- Convert back to mediatrack format
-  firstTrack = reaper.CSurf_TrackFromID(firstTrack, false)
-  lastTrack = reaper.CSurf_TrackFromID(lastTrack+1, false)
+  firstTrack = r.CSurf_TrackFromID(firstTrack, false)
+  lastTrack = r.CSurf_TrackFromID(lastTrack+1, false)
 
   -- Get current depth of selected tracks
-  depthFirst = reaper.GetMediaTrackInfo_Value(firstTrack, "I_FOLDERDEPTH")
-  depthLast = reaper.GetMediaTrackInfo_Value(lastTrack, "I_FOLDERDEPTH")
+  depthFirst = r.GetMediaTrackInfo_Value(firstTrack, "I_FOLDERDEPTH")
+  depthLast = r.GetMediaTrackInfo_Value(lastTrack, "I_FOLDERDEPTH")
 
   -- Indent first track of selection by 1
-  reaper.SetMediaTrackInfo_Value(firstTrack,"I_FOLDERDEPTH",depthFirst+1)
+  r.SetMediaTrackInfo_Value(firstTrack,"I_FOLDERDEPTH",depthFirst+1)
 
   -- Return track after selection to previous indent level
-  reaper.SetMediaTrackInfo_Value(lastTrack, "I_FOLDERDEPTH", depthLast-1)
+  r.SetMediaTrackInfo_Value(lastTrack, "I_FOLDERDEPTH", depthLast-1)
 
 
   ---- Name the folder
@@ -82,15 +84,15 @@ reaper.Undo_BeginBlock()
   if scriptName:find("ask for name") then
   
     -- Get user name for new folder
-    retval, folderName_csv = reaper.GetUserInputs("New Folder Name", 1, "Folder name:", "")
+    retval, folderName_csv = r.GetUserInputs("New Folder Name", 1, "Folder name:", "")
 
     -- Convert new track ID into mediatrack
-    newFolder = reaper.CSurf_TrackFromID(insertPoint+1, false)
+    newFolder = r.CSurf_TrackFromID(insertPoint+1, false)
 
     -- Name folder
-    reaper.GetSetMediaTrackInfo_String(newFolder, "P_NAME", folderName_csv, 1)
+    r.GetSetMediaTrackInfo_String(newFolder, "P_NAME", folderName_csv, 1)
     
-    reaper.Undo_EndBlock("Put selected tracks in folder \""..folderName_csv.."\"", -1)
+    r.Undo_EndBlock("Put selected tracks in folder \""..folderName_csv.."\"", -1)
   else
-    reaper.Undo_EndBlock("Put selected tracks in folder", -1)
+    r.Undo_EndBlock("Put selected tracks in folder", -1)
   end
