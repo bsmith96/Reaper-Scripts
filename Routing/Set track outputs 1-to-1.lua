@@ -4,9 +4,9 @@
   @link    
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 2.2
+  @version 2.3
   @changelog
-    # Added user identifier to provided file names
+    # Routes the master to alternative outputs (default to the last stereo pair, can be edited in the script) unless these are taken up by channels.
   @metapackage
   @provides
     [main] . > bsmith96_Set track outputs 1-to-1.lua
@@ -18,6 +18,7 @@
 
     ### Info
     * Routes tracks to the same output as their input, allowing quick routing for Virtual Sound Checks in live situations.
+    * Also routes the master to alternative outputs: by default, the last stereo pair of the audio device (unless taken up by 1-to-1 channel routing), but can be customised by editing the _User Customisation Area_ in the script
 
     ### Metapackage
     * Set track outputs 1-to-1
@@ -29,13 +30,24 @@
 ]]
 
 
+-- =========================================================
+-- ===============  USER CUSTOMISATION AREA  ===============
+-- =========================================================
+
+masterOutputChannelOption = "last" -- options: "first", "last" (both a stereo pair at the start or end of the audio device), or a number, which is the first of a stereo pair
+
+--------- End of user customisation area --
+
+
 -- ==================================================
 -- ===============  GLOBAL VARIABLES  ===============
 -- ==================================================
 
+local r = reaper
+
 -- get the script's name and directory
-local scriptName = ({reaper.get_action_context()})[2]:match("([^/\\_]+)%.lua$")
-local scriptDirectory = ({reaper.get_action_context()})[2]:sub(1, ({reaper.get_action_context()})[2]:find("\\[^\\]*$"))
+local scriptName = ({r.get_action_context()})[2]:match("([^/\\_]+)%.lua$")
+local scriptDirectory = ({r.get_action_context()})[2]:sub(1, ({r.get_action_context()})[2]:find("\\[^\\]*$"))
 
 
 -- ===========================================
@@ -44,31 +56,88 @@ local scriptDirectory = ({reaper.get_action_context()})[2]:sub(1, ({reaper.get_a
 
 function setRouting(track)
   -- get number of the track's rec input
-  trackInput = reaper.GetMediaTrackInfo_Value(track, "I_RECINPUT")
+  trackInput = r.GetMediaTrackInfo_Value(track, "I_RECINPUT")
 
   -- turn off routing to master
-  reaper.SetMediaTrackInfo_Value(track, "B_MAINSEND", 0)
+  r.SetMediaTrackInfo_Value(track, "B_MAINSEND", 0)
 
   -- turn off all sends
-  trackSends = reaper.GetTrackNumSends(track, 1)
+  trackSends = r.GetTrackNumSends(track, 1)
   for j = trackSends, 1, -1
   do
-    reaper.RemoveTrackSend(track, 1, 0)
+    r.RemoveTrackSend(track, 1, 0)
   end
 
   -- turn on routing to output number trackInput for mono inputs
   if trackInput < 1024 then
     trackSend = trackInput+1024
-    reaper.CreateTrackSend(track, "")
-    reaper.SetTrackSendInfo_Value(track, 1, 0, "I_DSTCHAN", trackSend)
+    r.CreateTrackSend(track, "")
+    r.SetTrackSendInfo_Value(track, 1, 0, "I_DSTCHAN", trackSend)
   end
 
   -- turn on touring to output number trackInput for stereo inputs
   if trackInput >= 1024 then
     trackSend = trackInput-1024
-    reaper.CreateTrackSend(track, "")
-    reaper.SetTrackSendInfo_Value(track, 1, 0,"I_DSTCHAN", trackSend)
+    r.CreateTrackSend(track, "")
+    r.SetTrackSendInfo_Value(track, 1, 0,"I_DSTCHAN", trackSend)
   end
+end
+
+function setMaster(opt)
+  -- get master track
+  masterTrack = r.GetMasterTrack(0)
+
+  -- get current send/s
+  masterTrackSends = r.GetTrackNumSends(masterTrack, 1)
+
+  -- remove existing send/s
+  for k = masterTrackSends, 1, -1
+  do
+    r.RemoveTrackSend(masterTrack, 1, 0)
+  end
+
+  -- get information about audio device
+  if opt == "last" then
+    outputCount = r.GetNumAudioOutputs()
+    outputValue = outputCount - 2
+  elseif opt == "first" then
+    outputValue = 0
+  elseif tonumber(opt) ~= nil then
+    outputValue = opt-1
+  else
+    msg("Error, please check script", "ERROR")
+  end
+
+  -- check the "master" doesn't clash with the last track
+  lastTrackID = r.CountTracks(0) - 1
+  lastTrack = r.GetTrack(0, lastTrackID)
+  lastTrackSend = r.GetTrackSendInfo_Value(lastTrack, 1, 0, "I_DSTCHAN")
+  if lastTrackSend >= 1024 then
+    lastTrackSend = lastTrackSend - 1023
+  end
+  if lastTrackSend < outputValue then
+    r.CreateTrackSend(masterTrack, "")
+    r.SetTrackSendInfo_Value(masterTrack, 1, 0, "I_DSTCHAN", outputValue)
+  else
+    msg("There was not space to route the master, so it has been unrouted", "Notification")
+  end
+
+end
+
+
+-- =========================================================
+-- ======================  UTILITIES  ======================
+-- =========================================================
+
+-- Deliver messages and add new line in console
+function dbg(dbg)
+  r.ShowConsoleMsg(tostring(dbg) .. "\n")
+end
+
+-- Deliver messages using message box
+function msg(msg, title)
+  local title = title or scriptName
+  r.MB(tostring(msg), title, 0)
 end
 
 
@@ -76,25 +145,25 @@ end
 -- ===============  MAIN ROUTINE  ===============
 -- ==============================================
 
-reaper.Undo_BeginBlock()
+r.Undo_BeginBlock()
 
   -- count tracks in the project
-  trackCount = reaper.CountTracks(0)
+  trackCount = r.CountTracks(0)
 
   -- set track output to the same number as track input
 
   for i = trackCount, 1, -1
   do
-    track = reaper.GetTrack(0, i-1)
+    track = r.GetTrack(0, i-1)
     if scriptName:find("ignoring folders") then
-      trackDepth = reaper.GetMediaTrackInfo_Value(track, "I_FOLDERDEPTH")
+      trackDepth = r.GetMediaTrackInfo_Value(track, "I_FOLDERDEPTH")
       if trackDepth <= 0.0 then
         setRouting(track)
       else
-        reaper.SetMediaTrackInfo_Value(track, "B_MAINSEND", 0)
+        r.SetMediaTrackInfo_Value(track, "B_MAINSEND", 0)
       end
     elseif scriptName:find("selected tracks") then
-      if reaper.IsTrackSelected(track) == true then
+      if r.IsTrackSelected(track) == true then
         setRouting(track)
       end
     else
@@ -102,4 +171,6 @@ reaper.Undo_BeginBlock()
     end
   end
 
-reaper.Undo_EndBlock(scriptName, -1)
+  setMaster(masterOutputChannelOption)
+
+r.Undo_EndBlock(scriptName, -1)
