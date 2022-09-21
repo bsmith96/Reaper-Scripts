@@ -36,9 +36,11 @@
 -- =================  GLOBAL VARIABLES  ====================
 -- =========================================================
 
+local r = reaper
+
 -- get the script's name and directory
-local scriptName = ({reaper.get_action_context()})[2]:match("([^/\\_]+)%.lua$")
-local scriptDirectory = ({reaper.get_action_context()})[2]:sub(1, ({reaper.get_action_context()})[2]:find("\\[^\\]*$"))
+local scriptName = ({r.get_action_context()})[2]:match("([^/\\_]+)%.lua$")
+local scriptDirectory = ({r.get_action_context()})[2]:sub(1, ({r.get_action_context()})[2]:find("\\[^\\]*$"))
 
 
 -- =========================================================
@@ -50,14 +52,15 @@ local scriptDirectory = ({reaper.get_action_context()})[2]:sub(1, ({reaper.get_a
 -- ======================  UTILITIES  ======================
 -- =========================================================
 
--- deliver messages and add new line in console
+-- Deliver messages and add new line in console
 function dbg(dbg)
-  reaper.ShowConsoleMsg(dbg .. "\n")
+  r.ShowConsoleMsg(tostring(dbg) .. "\n")
 end
 
--- deliver messages using message box
-function msg(msg)
-  reaper.MB(msg, scriptName, 0)
+-- Deliver messages using message box
+function msg(msg, title)
+  local title = title or scriptName
+  r.MB(tostring(msg), title, 0)
 end
 
 
@@ -65,8 +68,8 @@ end
 -- ===================  MAIN ROUTINE  ======================
 -- =========================================================
 
-reaper.Undo_BeginBlock()
+r.Undo_BeginBlock()
 
 
 
-reaper.Undo_EndBlock(scriptName, -1)
+r.Undo_EndBlock(scriptName, -1)
