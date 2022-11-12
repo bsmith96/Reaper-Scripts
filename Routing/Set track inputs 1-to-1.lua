@@ -4,9 +4,10 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 2.2
+  @version 2.3-b.20221112
   @changelog
-    # Added user identifier to provided file names
+    # Fix bug when splitting stereo at the end of a folder
+    # Cleanup script - changed `splitStereo:len()` to match other instances of `#splitStereo`
   @metapackage
   @provides
     [main] . > bsmith96_Set track inputs 1-to-1.lua
@@ -58,19 +59,62 @@ stereoSplitSuffix = {".L", ".R"} -- appended automatically if stereo tracks have
 -- ===============  GLOBAL VARIABLES  ===============
 -- ==================================================
 
+local r = reaper
+
 -- get the script's name and directory
-local scriptName = ({reaper.get_action_context()})[2]:match("([^/\\_]+)%.lua$")
-local scriptDirectory = ({reaper.get_action_context()})[2]:sub(1, ({reaper.get_action_context()})[2]:find("\\[^\\]*$"))
+local scriptName = ({r.get_action_context()})[2]:match("([^/\\_]+)%.lua$")
+local scriptDirectory = ({r.get_action_context()})[2]:sub(1, ({r.get_action_context()})[2]:find("\\[^\\]*$"))
 
 
 -- ===========================================
 -- ===============  FUNCTIONS  ===============
 -- ===========================================
 
+function getDepth(track)
+  trackDepth = r.GetMediaTrackInfo_Value(track, "I_FOLDERDEPTH")
+  return trackDepth
+end
+
+function insertTrackAfter(prev)
+  prevDepth = getDepth(prev) -- get depth of previous track
+  if prevDepth >= 0 then -- if track is the first in a folder, or a normal track
+    prevID = r.CSurf_TrackToID(prev, false)
+    r.InsertTrackAtIndex(prevID, true)
+    new = r.GetTrack(0, prevID)
+    return new
+  elseif prevDepth < 0 then -- if track is the last in a folder, or a number of folders
+    prevID = r.CSurf_TrackToID(prev, false)
+    r.InsertTrackAtIndex(prevID - 1, true) -- insert new track above selected
+    -- move new track below previous track
+    r.SetOnlyTrackSelected(prev)
+    r.ReorderSelectedTracks(prevID - 1, 2)
+    new = r.GetTrack(0, prevID)
+    return new
+  end
+end
+
+function splitStereo(track)
+  -- insert new track after the offending track
+  trackLeft = track
+  trackRight = insertTrackAfter(track)
+  -- get mono input numbers
+  trackInputLeft = trackInput - 1024
+  trackInputRight = trackInputLeft + 1
+  -- set track inputs
+  setInput(trackLeft, trackInputLeft)
+  setInput(trackRight, trackInputRight)
+  -- rename the tracks
+  trackName = string.sub(trackName, 1, 0-(#stereoSuffix+1))
+  r.GetSetMediaTrackInfo_String(trackLeft, "P_NAME", trackName..stereoSplitSuffix[1], true)
+  r.GetSetMediaTrackInfo_String(trackRight, "P_NAME", trackName..stereoSplitSuffix[2], true)
+  -- inform the user
+  r.ShowMessageBox("Track "..trackName.." requires a stereo input from an even/odd pair of channels. This is not doable, so the script has split this stereo track into 2 mono tracks.", "Routing Mismatch - Track '"..trackName.."'", 0)
+end
+
 function checkChannelCount(track)
 
   -- if track name ends with "--2" interpret it as a stereo track
-  _, trackName = reaper.GetSetMediaTrackInfo_String(track, "P_NAME", 0, false)
+  _, trackName = r.GetSetMediaTrackInfo_String(track, "P_NAME", 0, false)
   if trackName:sub(-#stereoSuffix) == stereoSuffix then
     return "Stereo", trackName
   else
@@ -95,31 +139,14 @@ function setRouting(track, i)
       -- set input
       setInput(track, trackInput)
       -- rename track (remove suffix)
-      trackName = string.sub(trackName, 1, 0-(stereoSuffix:len()+1))
-      reaper.GetSetMediaTrackInfo_String(track, "P_NAME", trackName, true)
+      trackName = string.sub(trackName, 1, 0-(#stereoSuffix+1))
+      r.GetSetMediaTrackInfo_String(track, "P_NAME", trackName, true)
       -- update stereoOffset
       stereoOffset = stereoOffset+1
 
-    -- if a stereo input / track won't work
+    -- if a stereo input / track won't work: SPLIT STEREO
     else
-      -- insert new track after the offending track
-      trackID = reaper.CSurf_TrackToID(track, false)
-      reaper.InsertTrackAtIndex(trackID, true)
-      -- get mono input numbers
-      trackInputLeft = trackInput - 1024
-      trackInputRight = trackInputLeft + 1
-      -- set tracks to variables
-      trackLeft = track
-      trackRight = reaper.CSurf_TrackFromID((reaper.CSurf_TrackToID(track, false)+1), false)
-      -- set track inputs
-      setInput(trackLeft, trackInputLeft)
-      setInput(trackRight, trackInputRight)
-      -- rename the tracks
-      trackName = string.sub(trackName, 1, 0-(stereoSuffix:len()+1))
-      reaper.GetSetMediaTrackInfo_String(trackLeft, "P_NAME", trackName..stereoSplitSuffix[1], true)
-      reaper.GetSetMediaTrackInfo_String(trackRight, "P_NAME", trackName..stereoSplitSuffix[2], true)
-      -- inform the user
-      reaper.ShowMessageBox("Track "..trackName.." requires a stereo input from an even/odd pair of channels. This is not doable, so the script has split this stereo track into 2 mono tracks.", "Routing Mismatch - Track '"..trackName.."'", 0)
+      splitStereo(track)
       -- update trackOffset
       trackOffset = trackOffset+1
     end
@@ -132,7 +159,23 @@ function setRouting(track, i)
 end
 
 function setInput(track, input)
-  reaper.SetMediaTrackInfo_Value(track, "I_RECINPUT", input)
+  r.SetMediaTrackInfo_Value(track, "I_RECINPUT", input)
+end
+
+
+-- =========================================================
+-- ======================  UTILITIES  ======================
+-- =========================================================
+
+-- Deliver messages and add new line in console
+function dbg(dbg)
+  r.ShowConsoleMsg(tostring(dbg) .. "\n")
+end
+
+-- Deliver messages using message box
+function msg(msg, title)
+  local title = title or scriptName
+  r.MB(tostring(msg), title, 0)
 end
 
 
@@ -140,26 +183,26 @@ end
 -- ===============  MAIN ROUTINE  ===============
 -- ==============================================
 
-reaper.Undo_BeginBlock()
+r.Undo_BeginBlock()
 
     stereoOffset = 0
     trackOffset = 0
     folderOffset = 0
 
     -- count tracks in the project
-    trackCount = reaper.CountTracks(0)
+    trackCount = r.CountTracks(0)
     
     -- set input to be the same as track number
     for i = 1, trackCount, 1
     do
       trackNum = i+trackOffset -- trackOffset accounts for additional split-stereo tracks created by the script
-      track = reaper.GetTrack(0, trackNum-1)
+      track = r.GetTrack(0, trackNum-1)
       if scriptName:find("selected tracks") then
-        if reaper.IsTrackSelected(track) == true then
-          reaper.SetMediaTrackInfo_Value(track, "I_RECINPUT", i-1)
+        if r.IsTrackSelected(track) == true then
+          r.SetMediaTrackInfo_Value(track, "I_RECINPUT", i-1)
         end
       elseif scriptName:find("ignoring folders") then
-        trackDepth = reaper.GetMediaTrackInfo_Value(track, "I_FOLDERDEPTH")
+        trackDepth = r.GetMediaTrackInfo_Value(track, "I_FOLDERDEPTH")
         if trackDepth <= 0.0 then
           setRouting(track, trackNum-folderOffset)
         else
@@ -170,4 +213,4 @@ reaper.Undo_BeginBlock()
       end
     end
     
-reaper.Undo_EndBlock(scriptName, -1)
+r.Undo_EndBlock(scriptName, -1)
