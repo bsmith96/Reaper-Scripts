@@ -4,7 +4,7 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 2.3-b.20221112
+  @version 2.3-b.2022.11.12
   @changelog
     # Fix bug when splitting stereo at the end of a folder
     # Cleanup script - changed `splitStereo:len()` to match other instances of `#splitStereo`
