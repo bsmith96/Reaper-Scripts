@@ -4,10 +4,10 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 2.3-b.2022.11.12
+  @version 2.3-b.2022.11.13
   @changelog
     # Fix bug when splitting stereo at the end of a folder
-    # Cleanup script - changed `splitStereo:len()` to match other instances of `#splitStereo`
+    # Cleanup script - changed `splitStereo:len()` to match other instances of `#splitStereo`
   @metapackage
   @provides
     [main] . > bsmith96_Set track inputs 1-to-1.lua
