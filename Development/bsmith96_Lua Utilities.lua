@@ -135,17 +135,42 @@ function bsmith96.copyPasteItem(oldTrack, oldItem, newTrack)
   return reaper.GetSelectedMediaItem( newItem, 0 )
 end
 
--- Set a tracks' input channel
-function setInput(track, input)
-  reaper.SetMediaTrackInfo_Value(track, "I_RECINPUT", input)
+-- Insert new track after previous, respecting folders
+-- ##FIXME##  THERE MIGHT BE A MORE THOROUGH WAY TO DO THIS
+function insertTrackAfter(prev)
+  prevDepth = getDepth(prev) -- get depth of previous track
+  if prevDepth >= 0 then -- if track is the first in a folder, or a normal track
+    prevID = r.CSurf_TrackToID(prev, false)
+    r.InsertTrackAtIndex(prevID, true)
+    new = r.GetTrack(0, prevID)
+    return new
+  elseif prevDepth < 0 then -- if track is the last in a folder, or a number of folders
+    prevID = r.CSurf_TrackToID(prev, false)
+    r.InsertTrackAtIndex(prevID - 1, true) -- insert new track above selected
+    -- move new track below previous track
+    r.SetOnlyTrackSelected(prev)
+    r.ReorderSelectedTracks(prevID - 1, 2)
+    new = r.GetTrack(0, prevID)
+    return new
+  end
 end
+
+
+-- =========================================================
+-- ===================  TRACK SEMANTICS  ===================
+-- =========================================================
 
 -- Returns the folder depth of a track
 function getDepth(track)
-  track = reaper.GetTrack(0, trackID-1)
-  trackDepth = reaper.GetMediaTrackInfo_Value(track, "I_FOLDERDEPTH")
+  trackDepth = r.GetMediaTrackInfo_Value(track, "I_FOLDERDEPTH")
   return trackDepth
 end
+
+-- Set a track's input channel
+function setInput(track, input)
+  r.SetMediaTrackInfo_Value(track, "I_RECINPUT", input)
+end
+
 
 -- =========================================================
 
