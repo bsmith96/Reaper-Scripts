@@ -1,6 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="BSmith96 Scripts" commit="f9b88968ebc2028ab2d54d1ea53defb72a65318f">
+<index version="1" name="BSmith96 Scripts" commit="a3492aa68162670d413d1800518a53715c188d45">
   <category name="Markers">
+    <reapack name="Create marker with name via OSC.lua" type="script" desc="Create marker with name via OSC">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Create marker with name via OSC\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Written by Ben Smith - June 2025\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel2 \b \fs28 Info\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab REQUIRES "osc.lua" IN THE SAME PATH\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Intended for integration between Reaper and QLab, allowing markers when cues are fired when Multitrack Recording a live show\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel2 \b \fs28 Usage\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Create a custom OSC shortcut for this script (in the actions menu)\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Send this OSC trigger with a string as the first argument. This string will become the name of the marker.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab For QLab integration:\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Reaper Preferences > Control/OSC/Web\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Add a new device\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Device name: QLab\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Configure device IP+local port\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Device Port: 53000\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Device IP: QLAB IP ADDRESS\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Local listen port: 53001\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Local IP: current IP address\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Allow binding messages to REAPER actions and FX learn: TRUE\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Pattern config: open config directory\par}
+{\pard \ql \f0 \sa0 \li1440 \fi-360 \endash \tx360\tab Copy the provided file "Qlab5.ReaperOSC" into this directory\sa180\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Pattern config: refresh list, then choose Qlab5\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Check your QLab settings - you need to ensure Network > OSC Access > No passcode has "view" access\sa180\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Now, Reaper should send a message to QLab whenever you start reaper playback, "/listen/go/name", which asks Reaper to send the cue name whenever "go" is fired.\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab In the actions menu, find this script.\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Press play on reaper\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Press "go" on any cue in Qlab\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab This should set the custom shortcut for the action to "/qlab/event/workspace/go/name"\sa180\sa180\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel2 \b \fs28 User customisation\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab \sa180\par}
+}
+]]></description>
+        <link rel="website" href="https://www.bensmithsound.uk">Author</link>
+        <link rel="website" href="https://github.com/bsmith96/Reaper-Scripts">Repository</link>
+      </metadata>
+      <version name="1.0" author="Ben Smith" time="2025-06-02T14:49:46Z">
+        <changelog><![CDATA[+ Initial version]]></changelog>
+        <source main="main" file="bsmith96_{filename}.lua">https://github.com/bsmith96/Reaper-Scripts/raw/50cb9d46df95b752b89475a40989ffcfdb3faa64/Markers/Create%20marker%20with%20name%20via%20OSC.lua</source>
+        <source file="osc.lua">https://github.com/bsmith96/Reaper-Scripts/raw/50cb9d46df95b752b89475a40989ffcfdb3faa64/Markers/osc.lua</source>
+        <source file="Qlab5.ReaperOSC">https://github.com/bsmith96/Reaper-Scripts/raw/50cb9d46df95b752b89475a40989ffcfdb3faa64/Markers/Qlab5.ReaperOSC</source>
+      </version>
+    </reapack>
     <reapack name="Locate to marker.lua" type="script" desc="Locate to marker by OSC">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
