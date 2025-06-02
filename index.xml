@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="BSmith96 Scripts" commit="a28df476a9cda4bd06b20b56e07392901cecf2e3">
+<index version="1" name="BSmith96 Scripts" commit="ca9d13a013830434f34f45028f120f6c36a1ab75">
   <category name="Markers">
     <reapack name="Create marker with name via OSC.lua" type="script" desc="Create marker with name via OSC">
       <metadata>
@@ -58,6 +58,12 @@
         <source main="main" file="bsmith96_Create marker with name via OSC.lua">https://github.com/bsmith96/Reaper-Scripts/raw/a28df476a9cda4bd06b20b56e07392901cecf2e3/Markers/Create%20marker%20with%20name%20via%20OSC.lua</source>
         <source file="bsmith96_qosc.lua">https://github.com/bsmith96/Reaper-Scripts/raw/a28df476a9cda4bd06b20b56e07392901cecf2e3/Markers/qosc.lua</source>
         <source file="Qlab5.ReaperOSC">https://github.com/bsmith96/Reaper-Scripts/raw/a28df476a9cda4bd06b20b56e07392901cecf2e3/Markers/Qlab5.ReaperOSC</source>
+      </version>
+      <version name="1.3" author="Ben Smith" time="2025-06-02T16:28:54Z">
+        <changelog><![CDATA[+ New version of Reaper OSC config bundled]]></changelog>
+        <source main="main" file="bsmith96_Create marker with name via OSC.lua">https://github.com/bsmith96/Reaper-Scripts/raw/ca9d13a013830434f34f45028f120f6c36a1ab75/Markers/Create%20marker%20with%20name%20via%20OSC.lua</source>
+        <source file="bsmith96_qosc.lua">https://github.com/bsmith96/Reaper-Scripts/raw/ca9d13a013830434f34f45028f120f6c36a1ab75/Markers/qosc.lua</source>
+        <source file="Qlab5.ReaperOSC">https://github.com/bsmith96/Reaper-Scripts/raw/ca9d13a013830434f34f45028f120f6c36a1ab75/Markers/Qlab5.ReaperOSC</source>
       </version>
     </reapack>
     <reapack name="Locate to marker.lua" type="script" desc="Locate to marker by OSC">
