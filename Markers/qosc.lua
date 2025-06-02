@@ -1,13 +1,16 @@
 --[[
-  @description osc
+  @description osc utility
   @version 1.0
+  @changelog
+    + Initial version
+  @noindex
 ]]
 
 -- Utility functions to get and parse OSC message and argument from REAPER action context
 
-local osc = {}
+local qosc = {}
 
-function osc.parse(context)
+function qosc.parse(context)
     local msg = {}
 
     -- Extract the message
@@ -29,13 +32,13 @@ function osc.parse(context)
     return msg
 end
 
-function osc.get()
+function qosc.get()
     local is_new, name, sec, cmd, rel, res, val, ctx = reaper.get_action_context()
     if ctx == nil or ctx == '' then
         return nil
     end
 
-    return osc.parse(ctx)
+    return qosc.parse(ctx)
 end
 
-return osc
+return qosc

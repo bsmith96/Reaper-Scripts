@@ -70,7 +70,7 @@ local scriptFolder = scriptDirectory:gsub(scriptName..".lua", "")
 package.path = scriptFolder .. '?.lua'
 
 -- Require the osc module
-local osc = require('osc')
+local osc = require('qosc')
 
 -- debug
 --local msg = osc.get()
