@@ -1,4 +1,7 @@
--- osc.lua
+--[[
+  @description osc
+  @version 1.0
+]]
 
 -- Utility functions to get and parse OSC message and argument from REAPER action context
 
