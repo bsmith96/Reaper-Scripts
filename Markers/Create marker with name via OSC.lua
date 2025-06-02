@@ -10,7 +10,7 @@
   @metapackage
   @provides
     [main] . > bsmith96_Create marker with name via OSC.lua
-    qosc.lua
+    qosc.lua > bsmith96_qosc.lua
     Qlab5.ReaperOSC
   @about
     # Create marker with name via OSC
