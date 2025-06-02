@@ -4,9 +4,9 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.2
+  @version 1.3
   @changelog
-    + Update name of provided library
+    + New version of Reaper OSC config bundled
   @metapackage
   @provides
     [main] . > bsmith96_Create marker with name via OSC.lua
