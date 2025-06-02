@@ -4,12 +4,12 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.0
+  @version 1.1
   @changelog
-    + Initial version
+    + Correct provided filename
   @metapackage
   @provides
-    [main] . > bsmith96_{filename}.lua
+    [main] . > bsmith96_Create marker with name via OSC.lua
     qosc.lua
     Qlab5.ReaperOSC
   @about
