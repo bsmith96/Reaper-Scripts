@@ -4,13 +4,12 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.3
+  @version 1.4
   @changelog
-    + New version of Reaper OSC config bundled
+    - Removes dependency - bundles functions required within this script
   @metapackage
   @provides
     [main] . > bsmith96_Create marker with name via OSC.lua
-    qosc.lua > bsmith96_qosc.lua
     Qlab5.ReaperOSC
   @about
     # Create marker with name via OSC
@@ -42,9 +41,6 @@
         * Press play on reaper
         * Press "go" on any cue in Qlab
         * This should set the custom shortcut for the action to "/qlab/event/workspace/go/name"
-
-    ### User customisation
-    *
 ]]
 
 
@@ -69,21 +65,42 @@ local scriptFolder = scriptDirectory:gsub(scriptName..".lua", "")
 
 package.path = scriptFolder .. '?.lua'
 
--- Require the osc module
-local osc = require('qosc')
-
--- debug
---local msg = osc.get()
---if msg then
---    reaper.ShowMessageBox("OSC address: " .. msg.address .. ", argument: " .. (msg.arg and msg.arg or "(nil)"), "Info", 0)
---else
---    reaper.ShowMessageBox("Invalid or no OSC message", "Error", 0)
---end
-
-
 -- =========================================================
 -- ======================  FUNCTIONS  ======================
 -- =========================================================
+
+local osc = {}
+
+function osc.parse(context)
+    local msg = {}
+
+    -- Extract the message
+    msg.address = context:match("^osc:/([^:[]+)")
+
+    if msg.address == nil then
+        return nil
+    end
+    
+    -- Extract float or string value
+    local value_type, value = context:match(":([fs])=([^%]]+)")
+    
+    if value_type == "f" then
+        msg.arg = tonumber(value)
+    elseif value_type == "s" then
+        msg.arg = value
+    end
+    
+    return msg
+end
+
+function osc.get()
+    local is_new, name, sec, cmd, rel, res, val, ctx = reaper.get_action_context()
+    if ctx == nil or ctx == '' then
+        return nil
+    end
+
+    return osc.parse(ctx)
+end
 
 -- =========================================================
 -- ======================  UTILITIES  ======================
