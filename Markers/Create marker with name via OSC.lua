@@ -4,9 +4,9 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.4
+  @version 1.5
   @changelog
-    - Removes dependency - bundles functions required within this script
+    + Tidied up script documentation
   @metapackage
   @provides
     [main] . > bsmith96_Create marker with name via OSC.lua
@@ -16,7 +16,6 @@
     Written by Ben Smith - June 2025
 
     ### Info
-    * REQUIRES "osc.lua" IN THE SAME PATH
     * Intended for integration between Reaper and QLab, allowing markers when cues are fired when Multitrack Recording a live show
 
     ### Usage
@@ -33,10 +32,11 @@
         * Local IP: current IP address
         * Allow binding messages to REAPER actions and FX learn: TRUE
         * Pattern config: open config directory
-          * Copy the provided file "Qlab5.ReaperOSC" into this directory
+          * Copy the provided file "Qlab5.ReaperOSC" into this directory, as well as in the same folder as this script
+          * This file can also be found here: https://github.com/bsmith96/Reaper-Scripts/blob/master/Markers/Qlab5.ReaperOSC
         * Pattern config: refresh list, then choose Qlab5
         * Check your QLab settings - you need to ensure Network > OSC Access > No passcode has "view" access
-      * Now, Reaper should send a message to QLab whenever you start reaper playback, "/listen/go/name", which asks Reaper to send the cue name whenever "go" is fired.
+      * Now, Reaper should send a message to QLab whenever you start reaper recording, "/listen/go/name", which asks Reaper to send the cue name whenever "go" is fired.
       * In the actions menu, find this script.
         * Press play on reaper
         * Press "go" on any cue in Qlab
@@ -129,8 +129,5 @@ local msg = osc.get()
 
 -- Create a marker at the current position, with the args of OSC message as the marker name
 r.AddProjectMarker(0,0,r.GetPlayPosition(),0,msg.arg,-1)
-
--- Send OSC message to QLab to request the cue name from cue ID
-
 
 r.Undo_EndBlock(scriptName, -1)
