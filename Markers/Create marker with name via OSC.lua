@@ -4,9 +4,9 @@
   @link
     Author     https://www.bensmithsound.uk
     Repository https://github.com/bsmith96/Reaper-Scripts
-  @version 1.5
+  @version 1.6
   @changelog
-    + Tidied up script documentation
+  + Only triggers when recording, regardless of "/ignore" messages being sent to QLab 5
   @metapackage
   @provides
     [main] . > bsmith96_Create marker with name via OSC.lua
@@ -122,12 +122,16 @@ end
 -- ===================  MAIN ROUTINE  ======================
 -- =========================================================
 
-r.Undo_BeginBlock()
+if r.GetAllProjectPlayStates() == 5 then -- only runs when project is recording
 
--- get OSC message
-local msg = osc.get()
+  r.Undo_BeginBlock()
 
--- Create a marker at the current position, with the args of OSC message as the marker name
-r.AddProjectMarker(0,0,r.GetPlayPosition(),0,msg.arg,-1)
+    -- get OSC message
+    local msg = osc.get()
 
-r.Undo_EndBlock(scriptName, -1)
+    -- Create a marker at the current position, with the args of OSC message as the marker name
+    r.AddProjectMarker(0,0,r.GetPlayPosition(),0,msg.arg,-1)
+
+  r.Undo_EndBlock(scriptName, -1)
+
+end
