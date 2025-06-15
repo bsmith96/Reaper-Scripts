@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="BSmith96 Scripts" commit="c23565a1ea90600ba223dfe63396405a7c13cbd5">
+<index version="1" name="BSmith96 Scripts" commit="49d8565ce2233548af6fd923064c2d3dfefe5640">
   <category name="Markers">
     <reapack name="Create marker with name via OSC.lua" type="script" desc="Create marker with name via OSC">
       <metadata>
@@ -72,6 +72,11 @@
         <changelog><![CDATA[+ Tidied up script documentation]]></changelog>
         <source main="main" file="bsmith96_Create marker with name via OSC.lua">https://github.com/bsmith96/Reaper-Scripts/raw/c23565a1ea90600ba223dfe63396405a7c13cbd5/Markers/Create%20marker%20with%20name%20via%20OSC.lua</source>
         <source file="Qlab5.ReaperOSC">https://github.com/bsmith96/Reaper-Scripts/raw/c23565a1ea90600ba223dfe63396405a7c13cbd5/Markers/Qlab5.ReaperOSC</source>
+      </version>
+      <version name="1.6" author="Ben Smith" time="2025-06-15T09:57:52Z">
+        <changelog><![CDATA[+ Only triggers when recording, regardless of '/ignore' messages being sent to QLab 5]]></changelog>
+        <source main="main" file="bsmith96_Create marker with name via OSC.lua">https://github.com/bsmith96/Reaper-Scripts/raw/49d8565ce2233548af6fd923064c2d3dfefe5640/Markers/Create%20marker%20with%20name%20via%20OSC.lua</source>
+        <source file="Qlab5.ReaperOSC">https://github.com/bsmith96/Reaper-Scripts/raw/49d8565ce2233548af6fd923064c2d3dfefe5640/Markers/Qlab5.ReaperOSC</source>
       </version>
     </reapack>
     <reapack name="Locate to marker.lua" type="script" desc="Locate to marker by OSC">
