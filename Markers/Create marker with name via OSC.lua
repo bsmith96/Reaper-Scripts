@@ -6,7 +6,7 @@
     Repository https://github.com/bsmith96/Reaper-Scripts
   @version 1.6
   @changelog
-  + Only triggers when recording, regardless of /ignore messages being sent to QLab 5
+  + Only triggers when recording, regardless of 'ignore' messages being sent to QLab 5
   @metapackage
   @provides
     [main] . > bsmith96_Create marker with name via OSC.lua
