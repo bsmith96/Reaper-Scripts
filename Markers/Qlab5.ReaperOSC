@@ -232,9 +232,9 @@ DEVICE_ROTARY_CENTER 0
 # REPEAT t/repeat
 
 RECORD t/record t/listen/go/name
-STOP t/stop t/ignore
+STOP t/ignore
 PLAY t/play
-PAUSE t/pause t/ignore
+PAUSE t/ignore
 
 # AUTO_REC_ARM t/autorecarm
 # SOLO_RESET t/soloreset
