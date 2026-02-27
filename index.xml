@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="BSmith96 Scripts" commit="cb0996773c97830186a4a073a097c041e1180169">
+<index version="1" name="BSmith96 Scripts" commit="58b3a7ef45c35cbbccc13adff1fa8c44823a22d7">
   <category name="Markers">
     <reapack name="Create marker with name via OSC.lua" type="script" desc="Create marker with name via OSC">
       <metadata>
@@ -377,7 +377,8 @@ this script
 {\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel2 \b \fs28 Info\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Using the same macro to start and stop recording on both Reaper and Vor.\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Ensure Vor saves these videos on a drive accessible over the network by the Reaper computer.\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab When stopped, insert the video, synced with the correct "start" point.\sa180\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab When stopped, insert the video, synced with the correct "start" point.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab TODO: record dummy track simultaneously with multitrack and replace?\sa180\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel2 \b \fs28 Usage\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab \sa180\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel2 \b \fs28 User customisation\par}
