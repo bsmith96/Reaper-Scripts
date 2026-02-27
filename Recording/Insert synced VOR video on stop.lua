@@ -18,6 +18,7 @@
     * Using the same macro to start and stop recording on both Reaper and Vor.
     * Ensure Vor saves these videos on a drive accessible over the network by the Reaper computer.
     * When stopped, insert the video, synced with the correct "start" point. 
+    * TODO: record dummy track simultaneously with multitrack and replace?
 
     ### Usage
     * 
