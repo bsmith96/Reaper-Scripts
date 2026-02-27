@@ -32,7 +32,8 @@
 -- =========================================================
 
 vorTrack = 1 -- Track number on which to place video files
-vorFolder = () -- Folder location where Vor videos are saved when Vor recordings are stopped
+vorFolder = "default" -- Folder location where Vor videos are saved when Vor recordings are stopped
+-- Defaults to project folder /vor
 
 --------- End of user customisation area --
 
@@ -47,24 +48,35 @@ local r = reaper
 local scriptName = ({r.get_action_context()})[2]:match("([^/\\_]+)%.lua$")
 local scriptDirectory = ({r.get_action_context()})[2]:sub(1, ({r.get_action_context()})[2]:find("\\[^\\]*$"))
 
+-- get default vorFolder
+if vorFolder == "default" then
+  projectFolder = r.GetProjectPath()
+  vorFolder = projectFolder .. "/vor"
+end
+
 
 -- =========================================================
 -- ======================  FUNCTIONS  ======================
 -- =========================================================
 
 -- Get most recent video in folder
-function getNewestVor(folder)
-  dbg("getNewestVor -- function incomplete")
+function getNewestFile(folder)
+  dbg("-- getNewestFile -- function incomplete")
+end
+
+function getItemPosition(item)
+  itemPosition = r.GetMediaItemInfo_Value(item, "D_POSITION", 0)
+  dbg("Position of item: "..itemPosition)
 end
 
 -- Get start time of most recent recording in Reaper
 function getReaperLastStartTime()
-  dbg("getReaperLastStartTime -- function incomplete")
+  dbg("-- getReaperLastStartTime -- function incomplete")
 end
 
 -- Insert file on specific track
 function insertFileOnTrack(file, track, startTime)
-  dbg("insertFileOnTrack -- function incomplete")
+  dbg("-- insertFileOnTrack -- function incomplete")
 end
 
 
@@ -90,13 +102,23 @@ end
 
 r.Undo_BeginBlock()
 
+-- dbg vor folder
+dbg("Vor folder: "..vorFolder)
+
+-- dbg item position function
+testItem = r.GetSelectedMediaItem(0,0)
+getItemPosition(testItem)
+
+-- Get selected item - i.e. last item recorded
+selectedItem = r.GetSelectedMediaItem(0,0) -- apparently this is not efficient and an alternative should be used?
+
 -- Set variable of start time of reaper's last recording
-reaperLastStartTime = getReaperLastStartTime()
+reaperItemStartTime = getItemPosition(selectedItem)
 
 -- Set variable of most recently recorded Vor video file
-newestVor = getNewestVor(vorFolder)
+newestVor = getNewestFile(vorFolder)
 
 -- Insert file on vorTrack
-insertFileOnTrack(newestVor, vorTrack, reaperLastStartTime)
+insertFileOnTrack(newestVor, vorTrack, reaperItemStartTime)
 
 r.Undo_EndBlock(scriptName, -1)
